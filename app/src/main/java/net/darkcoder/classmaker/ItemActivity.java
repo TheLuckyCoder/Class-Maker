@@ -50,7 +50,7 @@ public class ItemActivity extends AppCompatActivity{
         File itemSource = new File (path + (itemName + ".cpp"));
 
         String [] itemHeaderFile = String.valueOf("#pragma once\n" +
-                "#include minecraftpe/world/item/Item.h\n" + //I can't write #include "minecraftpe/world/item/Item.h"
+                "#include \"minecraftpe/world/item/Item.h\"\n" + //I can't write #include "minecraftpe/world/item/Item.h"
                 "class " + itemNameTxt + " : public Item {\n" +
                 "public:\n" +
                 "   " + itemNameTxt + "(short);\n" +
