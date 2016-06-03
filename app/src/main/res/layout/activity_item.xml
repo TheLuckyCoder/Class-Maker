@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/padding"
+    android:paddingRight="@dimen/padding"
+    tools:context="net.darkcoder.classmaker.pro.ItemActivity"
+    android:background="@color/colorBackground">
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtItemName"
+        android:inputType="text"
+        android:gravity="center"
+        android:hint="ItemName"
+        android:textSize="20sp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtItemDescriptionId"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:hint="DescriptionId(ex: itemName)"
+        android:layout_below="@+id/txtItemName"
+        android:inputType="textNoSuggestions"
+        android:visibility="gone"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtItemCategory"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:hint="BLOCKS, DECORATIONS, TOOLS, ITEMS"
+        android:layout_below="@+id/txtItemDescriptionId"
+        android:inputType="textNoSuggestions"
+        android:visibility="gone"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtItemTexture"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/txtItemCategory"
+        android:hint="Texture(item_name)"
+        android:layout_marginTop="10dp"
+        android:inputType="textNoSuggestions"
+        android:visibility="gone"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtItemStackSize"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/txtItemTexture"
+        android:hint="Max Stack Size"
+        android:layout_marginTop="10dp"
+        android:inputType="number"
+        android:visibility="gone"/>
+</RelativeLayout>
