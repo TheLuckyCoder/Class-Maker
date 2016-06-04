@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
-import com.razvanmcrafter.modmaker.pro.R;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -16,7 +14,7 @@ import java.io.IOException;
 
 public class ItemActivity extends AppCompatActivity{
 
-    public static String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ModMaker/";
+    public static String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClassMaker/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +31,7 @@ public class ItemActivity extends AppCompatActivity{
         EditText itemDescription = (EditText) findViewById(R.id.txtItemDescriptionId);
         EditText itemCategory = (EditText) findViewById(R.id.txtItemCategory);
         EditText itemTexture = (EditText) findViewById(R.id.txtItemTexture);
-        EditText itemMaxStackSize = (EditText) findViewById(R.id.txtItemStackSize);
+        EditText itemMaxStackSize = (EditText) findViewById(R.id.txtItemMaxStackSize);
 
         //Asserts
         assert itemName != null;
@@ -44,28 +42,33 @@ public class ItemActivity extends AppCompatActivity{
 
         //Strings
         String itemNameTxt = itemName.getText().toString();
+        String itemDescriptionTxt = itemDescription.getText().toString();
+        String itemCategoryTxt = itemCategory.getText().toString();
+        String itemTextureTxt = itemTexture.getText().toString();
+        String itemMaxStackSizeTxt = itemMaxStackSize.getText().toString();
 
         //Code
-        File itemHeader = new File (path + (itemName + ".h"));
-        File itemSource = new File (path + (itemName + ".cpp"));
+        File itemHeaderFile = new File (path + (itemNameTxt + ".h"));
+        File itemSourceFile = new File (path + (itemNameTxt + ".cpp"));
 
-        String [] itemHeaderFile = String.valueOf("#pragma once\n" +
-                "#include \"minecraftpe/world/item/Item.h\"\n" + //I can't write #include "minecraftpe/world/item/Item.h"
+        String [] itemHeaderString = String.valueOf("#pragma once\n" +
+                "#include \"minecraftpe/world/item/Item.h\"\n" +
                 "class " + itemNameTxt + " : public Item {\n" +
                 "public:\n" +
                 "   " + itemNameTxt + "(short);\n" +
                 "};")
                 .split(System.getProperty("line.separator"));
-        Save(itemHeader, itemHeaderFile);
+        Save(itemHeaderFile, itemHeaderString);
 
-        String [] itemSourceFile = String.valueOf("#include " + itemNameTxt + "\n" +
-                itemNameTxt + "::" + itemNameTxt + "(short itemId) : Item('" + itemDescription.getText() + "', " + "itemId - 0x100) {\n" +
+        String [] itemSourceString = String.valueOf("#include \"" + itemNameTxt + ".h\"\n" +
+                itemNameTxt + "::" + itemNameTxt + "(short itemId) : Item(\"" + itemDescriptionTxt + "\", " + "itemId - 0x100) {\n" +
                 "   Item::mItems[itemId] = this;\n" +
-                "   creativeCategory = CreativeCategory::" + itemCategory.getText() + ";\n" +
-                "   setMaxStackSize(" + itemMaxStackSize.getText() + ");\n" +
+                "   creativeCategory = CreativeCategory::" + itemCategoryTxt + ";\n" +
+                "   setIcon(\"" + itemTextureTxt + "\", 0);" +
+                "   setMaxStackSize(" + itemMaxStackSizeTxt + ");\n" +
                 "}")
                 .split(System.getProperty("line.separator"));
-        Save(itemSource, itemSourceFile);
+        Save(itemSourceFile, itemSourceString);
     }
 
     public static void Save(File file, String[] data) {

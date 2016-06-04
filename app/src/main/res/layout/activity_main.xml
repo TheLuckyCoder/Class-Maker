@@ -2,8 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="net.darkcoder.classmaker.pro.MainActivity"
-    android:background="@color/colorBackground">
+    tools:context="net.darkcoder.classmaker.MainActivity">
 
     <Button
         android:layout_margin="@dimen/margin"
@@ -14,8 +13,7 @@
         android:text="Block"
         android:textSize="20sp"
         android:gravity="center"
-        android:layout_centerHorizontal="true"
-        android:textColor="#FFFFFF" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_margin="@dimen/margin"
@@ -23,19 +21,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnItems"
-        android:text="Items"
+        android:text="Item"
         android:textSize="20sp"
         android:gravity="center"
-        android:layout_centerHorizontal="true"
-        android:textColor="#FFFFFF" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/app_developer"
-        android:id="@+id/textView"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

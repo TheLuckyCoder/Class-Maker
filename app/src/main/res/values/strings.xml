@@ -1,35 +1,9 @@
 <resources>
-    <string name="app_name">Mod Maker</string>
-    <string name="app_name_pro">Mod Maker Pro</string>
-    <string name="banner_ad_unit_id">ca-app-pub-1279472163660969/8742232334</string> <!-- Test: ca-app-pub-3940256099942544/6300978111 -->
+    <string name="app_name">Class Maker</string>
 
-    <string name="hint_name">Item Name</string>
-    <string name="hint_texture_index">Texture Index(default: 0)</string>
-    <string name="hint_texture">Texture Name</string>
-    <string name="hint_id">Id(from 512 to 4096)</string>
-    <string name="hint_stack">Max Stack Size(from 1 to 64)</string>
-    <string name="hint_half_food">Half Food(from 1 to 16)</string>
-    <string name="hint_furnace_recipe_input">Input Id</string>
-    <string name="hint_furnace_recipe_output">Output Id</string>
-    <string name="hint_furnace_recipe_amount">Amount(ex: 1)</string>
-    <string name="hint_mod_name">Mod Name</string>
-    <string name="hint_world_message">Send a chat message when entering a world</string>
-
-    <string name="custom_item">Custom Item</string>
-    <string name="custom_food">Custom Food Item</string>
-    <string name="custom_recipe">Custom Recipe</string>
-    <string name="custom_furnace_recipe">Custom Furnace Recipe</string>
-    <string name="enter_world_message">Enter World Message</string>
-
-    <string name="edition_pro_get">Get Pro Edition</string>
-    <string name="mod_create">Create Mod</string>
-    <string name="mod_start">Start Modding</string>
-    <string name="check_twitter">Check out my Twitter</string>
-    <string name="app_developer">Made by Razvan MCrafter</string>
-
-    <string name="error_no_mod_name">You need to give your mod a name</string>
-    <string name="error_mod_empty">Your mod can\'t be empty</string>
-
-    <string name="finish_instruction_inst">Start your MCPE Launcher and import the Mod from the folder ModMaker</string>
-    <string name="finish_instruction">What do you need to do next:</string>
+    <string name="hint_item_name">ItemName</string>
+    <string name="hint_item_description_id">DescriptionId(ex: itemName)</string>
+    <string name="hint_item_category">Category: TOOLS/ITEMS</string>
+    <string name="hint_item_texture">Texture(item_name)</string>
+    <string name="hint_item_maxstack">Max Stack Size</string>
 </resources>

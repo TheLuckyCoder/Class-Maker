@@ -9,8 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
-import com.razvanmcrafter.modmaker.pro.R;
-
 public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_EXTERNAL_STRORAGE_RESULT = 1;
