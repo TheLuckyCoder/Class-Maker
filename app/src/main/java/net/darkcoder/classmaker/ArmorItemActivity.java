@@ -66,7 +66,7 @@ public class ArmorItemActivity extends AppCompatActivity{
                 "\n" +
                 "class " + itemNameTxt + " : public ArmorItem {\n" +
                 "public:\n" +
-                "   " + itemNameTxt + "(short itemId);\n" +
+                "\t" + itemNameTxt + "(short itemId);\n" +
                 "};")
                 .split(System.getProperty("line.separator"));
         Save(armorItemHeaderFile, itemHeaderString);
@@ -74,10 +74,10 @@ public class ArmorItemActivity extends AppCompatActivity{
         String [] itemSourceString = String.valueOf("#include \"" + itemNameTxt + ".h\"\n" +
                 "\n" +
                 itemNameTxt + "::" + itemNameTxt + "(short itemId) : Item(\"" + itemDescriptionTxt + "\", " + "itemId - 0x100, " + armorMaterialTxt + ", " + armorRenderTypeTxt + ", ArmorSlot(" + armorSlotTxt + ")) {\n" +
-                "   Item::mItems[itemId] = this;\n" +
-                "   creativeCategory = CreativeCategory::" + itemCategoryTxt + ";\n" +
-                "   setIcon(\"" + itemTextureTxt + "\", 0);\n" +
-                "   setMaxDamage(" + itemMaxDamageTxt + ");\n" +
+                "\tItem::mItems[itemId] = this;\n" +
+                "\tcreativeCategory = CreativeCategory::" + itemCategoryTxt + ";\n" +
+                "\tsetIcon(\"" + itemTextureTxt + "\", 0);\n" +
+                "\tsetMaxDamage(" + itemMaxDamageTxt + ");\n" +
                 "}")
                 .split(System.getProperty("line.separator"));
         Save(armorItemSourceFile, itemSourceString);
