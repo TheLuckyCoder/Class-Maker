@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void makeArmorItemClass(View view) {
-        //startActivity(new Intent(MainActivity.this, ArmorItemActivity.class));
+        startActivity(new Intent(MainActivity.this, ArmorItemActivity.class));
     }
 
     public void makeBlockClass(View view) {

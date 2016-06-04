@@ -6,6 +6,10 @@
     <string name="hint_item_category">Category: TOOLS/ITEMS</string>
     <string name="hint_item_texture">Texture: item_name</string>
     <string name="hint_item_maxstack">Max Stack Size</string>
+    <string name="hint_item_armor_material">Armor Material</string>
+    <string name="hint_item_armor_rendertype">Render Type</string>
+    <string name="hint_item_armor_slot">Armor Slot(0 – 3)</string>
+    <string name="hint_item_maxdamage">Max Damage</string>
 
     <string name="class_item">Item Class</string>
     <string name="class_item_armor">Armor Item Class</string>
