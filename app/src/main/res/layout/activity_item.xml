@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/padding"
     android:paddingRight="@dimen/padding"
-    tools:context="net.darkcoder.classmaker.ItemActivity">
+    tools:context=".ItemActivity">
 
     <EditText
         android:layout_width="fill_parent"
@@ -22,7 +22,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtItemDescriptionId"
-        android:textColor="#FFFFFF"
         android:gravity="center"
         android:layout_centerHorizontal="true"
         android:hint="@string/hint_item_description_id"
@@ -33,7 +32,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtItemCategory"
-        android:textColor="#FFFFFF"
         android:gravity="center"
         android:layout_centerHorizontal="true"
         android:hint="@string/hint_item_category"
@@ -44,7 +42,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtItemTexture"
-        android:textColor="#FFFFFF"
         android:gravity="center"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/txtItemCategory"
@@ -56,11 +53,24 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtItemMaxStackSize"
-        android:textColor="#FFFFFF"
         android:gravity="center"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/txtItemTexture"
         android:hint="@string/hint_item_maxstack"
         android:layout_marginTop="10dp"
         android:inputType="number" />
+
+    <Button
+        android:onClick="createMod"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnCreateMod"
+        android:gravity="center"
+        android:text="@string/class_create"
+        android:layout_below="@+id/txtItemMaxStackSize"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="140dp"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp" />
 </RelativeLayout>

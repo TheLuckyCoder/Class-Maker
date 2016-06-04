@@ -6,22 +6,35 @@
 
     <Button
         android:layout_margin="@dimen/margin"
-        android:onClick="startBlockClass"
+        android:onClick="makeItemClass"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnBlocks"
-        android:text="Block"
+        android:id="@+id/btnItem"
+        android:text="@string/class_item"
         android:textSize="20sp"
         android:gravity="center"
         android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_margin="@dimen/margin"
-        android:onClick="startItemClass"
+        android:onClick="makeArmorItemClass"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnItems"
-        android:text="Item"
+        android:layout_below="@+id/btnItem"
+        android:id="@+id/btnArmorItem"
+        android:text="@string/class_item_armor"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_margin="@dimen/margin"
+        android:onClick="makeBlockClass"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnArmorItem"
+        android:id="@+id/btnBlock"
+        android:text="@string/class_block"
         android:textSize="20sp"
         android:gravity="center"
         android:layout_centerHorizontal="true" />

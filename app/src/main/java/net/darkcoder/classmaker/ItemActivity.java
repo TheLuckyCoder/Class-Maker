@@ -25,7 +25,7 @@ public class ItemActivity extends AppCompatActivity{
         dir.mkdirs();
     }
 
-    public void createModClick (View view) {
+    public void createMod (View view) {
         //Defines
         EditText itemName = (EditText) findViewById(R.id.txtItemName);
         EditText itemDescription = (EditText) findViewById(R.id.txtItemDescriptionId);
@@ -52,19 +52,22 @@ public class ItemActivity extends AppCompatActivity{
         File itemSourceFile = new File (path + (itemNameTxt + ".cpp"));
 
         String [] itemHeaderString = String.valueOf("#pragma once\n" +
+                "\n" +
                 "#include \"minecraftpe/world/item/Item.h\"\n" +
+                "\n" +
                 "class " + itemNameTxt + " : public Item {\n" +
                 "public:\n" +
-                "   " + itemNameTxt + "(short);\n" +
+                "   " + itemNameTxt + "(short itemId);\n" +
                 "};")
                 .split(System.getProperty("line.separator"));
         Save(itemHeaderFile, itemHeaderString);
 
         String [] itemSourceString = String.valueOf("#include \"" + itemNameTxt + ".h\"\n" +
+                "\n" +
                 itemNameTxt + "::" + itemNameTxt + "(short itemId) : Item(\"" + itemDescriptionTxt + "\", " + "itemId - 0x100) {\n" +
                 "   Item::mItems[itemId] = this;\n" +
                 "   creativeCategory = CreativeCategory::" + itemCategoryTxt + ";\n" +
-                "   setIcon(\"" + itemTextureTxt + "\", 0);" +
+                "   setIcon(\"" + itemTextureTxt + "\", 0);\n" +
                 "   setMaxStackSize(" + itemMaxStackSizeTxt + ");\n" +
                 "}")
                 .split(System.getProperty("line.separator"));

@@ -21,16 +21,22 @@ public class MainActivity extends AppCompatActivity {
         checkForPermissions();
     }
 
-    public void startItemClass(View view) {
+    public void makeItemClass(View view) {
         startActivity(new Intent(MainActivity.this, ItemActivity.class));
+    }
+
+    public void makeArmorItemClass(View view) {
+        //startActivity(new Intent(MainActivity.this, ArmorItemActivity.class));
+    }
+
+    public void makeBlockClass(View view) {
+        //startActivity(new Intent(MainActivity.this, BlockActivity.class));
     }
 
     public void checkForPermissions() {
         if(android.os.Build.VERSION.SDK_INT >= 23) {
             if(ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                startActivity(new Intent(MainActivity.this, ItemActivity.class));
-            } else {
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 if(shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                     Toast.makeText(this,
                             "External storage permission required to save mods",
