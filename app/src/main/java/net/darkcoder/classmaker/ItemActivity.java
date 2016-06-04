@@ -5,6 +5,7 @@ import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -72,6 +73,7 @@ public class ItemActivity extends AppCompatActivity{
                 "}")
                 .split(System.getProperty("line.separator"));
         Save(itemSourceFile, itemSourceString);
+        Toast.makeText(getApplicationContext(), (itemNameTxt + R.string.class_generated), Toast.LENGTH_SHORT).show();
     }
 
     public static void Save(File file, String[] data) {
