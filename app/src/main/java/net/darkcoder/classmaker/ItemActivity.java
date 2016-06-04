@@ -57,7 +57,7 @@ public class ItemActivity extends AppCompatActivity{
                 "\n" +
                 "class " + itemNameTxt + " : public Item {\n" +
                 "public:\n" +
-                "   " + itemNameTxt + "(short itemId);\n" +
+                "\t" + itemNameTxt + "(short itemId);\n" +
                 "};")
                 .split(System.getProperty("line.separator"));
         Save(itemHeaderFile, itemHeaderString);
@@ -65,10 +65,10 @@ public class ItemActivity extends AppCompatActivity{
         String [] itemSourceString = String.valueOf("#include \"" + itemNameTxt + ".h\"\n" +
                 "\n" +
                 itemNameTxt + "::" + itemNameTxt + "(short itemId) : Item(\"" + itemDescriptionTxt + "\", " + "itemId - 0x100) {\n" +
-                "   Item::mItems[itemId] = this;\n" +
-                "   creativeCategory = CreativeCategory::" + itemCategoryTxt + ";\n" +
-                "   setIcon(\"" + itemTextureTxt + "\", 0);\n" +
-                "   setMaxStackSize(" + itemMaxStackSizeTxt + ");\n" +
+                "\tItem::mItems[itemId] = this;\n" +
+                "\tcreativeCategory = CreativeCategory::" + itemCategoryTxt + ";\n" +
+                "\tsetIcon(\"" + itemTextureTxt + "\", 0);\n" +
+                "\tsetMaxStackSize(" + itemMaxStackSizeTxt + ");\n" +
                 "}")
                 .split(System.getProperty("line.separator"));
         Save(itemSourceFile, itemSourceString);
