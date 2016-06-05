@@ -4,17 +4,17 @@
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/padding"
     android:paddingRight="@dimen/padding"
-    tools:context=".ItemActivity">
+    tools:context=".ItemMaker">
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtItemName"
-        android:inputType="text"
+        android:id="@+id/txtClassName"
         android:gravity="center"
         android:hint="@string/class_name"
         android:textSize="20sp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:inputType="textNoSuggestions" />
 
     <EditText
         android:layout_width="fill_parent"
@@ -23,7 +23,7 @@
         android:gravity="center"
         android:layout_centerHorizontal="true"
         android:hint="@string/hint_item_description_id"
-        android:layout_below="@+id/txtItemName"
+        android:layout_below="@+id/txtClassName"
         android:inputType="textNoSuggestions" />
 
     <EditText
@@ -32,7 +32,7 @@
         android:id="@+id/txtItemCategory"
         android:gravity="center"
         android:layout_centerHorizontal="true"
-        android:hint="@string/hint_item_category"
+        android:hint="@string/hint_category"
         android:layout_below="@+id/txtItemDescriptionId"
         android:inputType="number" />
 

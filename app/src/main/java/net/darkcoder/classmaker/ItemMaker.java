@@ -12,7 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class ItemActivity extends AppCompatActivity{
+public class ItemMaker extends AppCompatActivity{
 
     public static String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClassMaker/";
 
@@ -28,25 +28,26 @@ public class ItemActivity extends AppCompatActivity{
     public void createMod (View view) {
         //Defines
         EditText className = (EditText) findViewById(R.id.txtClassName);
-        EditText itemDescription = (EditText) findViewById(R.id.txtItemDescriptionId);
+        EditText itemDescriptionId = (EditText) findViewById(R.id.txtItemDescriptionId);
         EditText itemCategory = (EditText) findViewById(R.id.txtItemCategory);
         EditText itemTexture = (EditText) findViewById(R.id.txtItemTexture);
         EditText itemMaxStackSize = (EditText) findViewById(R.id.txtItemMaxStackSize);
 
         //Asserts
         assert className != null;
-        assert itemDescription != null;
+        assert itemDescriptionId != null;
         assert itemCategory != null;
         assert itemTexture != null;
         assert itemMaxStackSize != null;
 
-        //Strings
+        //Strings and Integers
         String classNameTxt = className.getText().toString();
-        String itemDescriptionTxt = itemDescription.getText().toString();
+        String itemDescriptionIdTxt = itemDescriptionId.getText().toString();
         String itemCategoryTxt = itemCategory.getText().toString();
         String itemTextureTxt = itemTexture.getText().toString();
-        String itemMaxStackSizeTxt = itemMaxStackSize.getText().toString();
-        if(itemCategoryTxt.matches("1"))
+        int itemMaxStackSizeTxt = Integer.parseInt(itemMaxStackSize.getText().toString());
+
+        if (itemCategoryTxt.matches("1"))
             itemCategoryTxt = "BLOCKS";
         else if (itemCategoryTxt.matches("2"))
             itemCategoryTxt = "DECORATIONS";
@@ -55,14 +56,17 @@ public class ItemActivity extends AppCompatActivity{
         else if (itemCategoryTxt.matches("4"))
             itemCategoryTxt = "ITEMS";
 
+        if(itemMaxStackSizeTxt > 64)
+            itemMaxStackSizeTxt = 64;
+        if(itemMaxStackSizeTxt < 1)
+            itemMaxStackSizeTxt = 1;
+
         //Code
         File itemHeaderFile = new File (path + (classNameTxt + ".h"));
         File itemSourceFile = new File (path + (classNameTxt + ".cpp"));
 
-        String [] itemHeaderString = String.valueOf("#pragma once\n" +
-                "\n" +
-                "#include \"com/mojang/minecraftpe/world/item/Item.h\"\n" +
-                "\n" +
+        String [] itemHeaderString = String.valueOf("#pragma once\n\n" +
+                "#include \"com/mojang/minecraftpe/world/item/Item.h\"\n\n" +
                 "class " + classNameTxt + " : public Item {\n" +
                 "public:\n" +
                 "\t" + classNameTxt + "(short itemId);\n" +
@@ -70,11 +74,10 @@ public class ItemActivity extends AppCompatActivity{
                 .split(System.getProperty("line.separator"));
         Save(itemHeaderFile, itemHeaderString);
 
-        String [] itemSourceString = String.valueOf("#include \"" + classNameTxt + ".h\"\n" +
-                "\n" +
-                classNameTxt + "::" + classNameTxt + "(short itemId) : Item(\"" + itemDescriptionTxt + "\", " + "itemId - 0x100) {\n" +
+        String [] itemSourceString = String.valueOf("#include \"" + classNameTxt + ".h\"\n\n" +
+                classNameTxt + "::" + classNameTxt + "(short itemId) : Item(\"" + itemDescriptionIdTxt + "\", " + "itemId - 0x100) {\n" +
                 "\tItem::mItems[itemId] = this;\n" +
-                "\tcreativeCategory = CreativeCategory::" + itemCategoryTxt + ";\n" +
+                "\tcreativeCategory = CreativeItemCategory::" + itemCategoryTxt + ";\n" +
                 "\tsetIcon(\"" + itemTextureTxt + "\", 0);\n" +
                 "\tsetMaxStackSize(" + itemMaxStackSizeTxt + ");\n" +
                 "}")

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="net.darkcoder.classmaker">
 
-a    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:fullBackupContent="true"
@@ -21,11 +21,14 @@ a    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /
             </intent-filter>
         </activity>
         <activity
-            android:name=".ItemActivity"
-            android:label="@string/app_name" />
+            android:name=".ItemMaker"
+            android:label="@string/item_app_name" />
         <activity
-            android:name=".ArmorItemActivity"
-            android:label="@string/app_name" />
+            android:name=".ArmorItemMaker"
+            android:label="@string/armor_item_app_name" />
+        <activity
+            android:name=".BlockMaker"
+            android:label="@string/block_app_name" />
     </application>
 
 </manifest>

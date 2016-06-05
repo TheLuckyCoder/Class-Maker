@@ -13,7 +13,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 
-public class ArmorItemActivity extends AppCompatActivity {
+public class ArmorItemMaker extends AppCompatActivity {
 
     public static String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClassMaker/";
 
@@ -29,7 +29,7 @@ public class ArmorItemActivity extends AppCompatActivity {
     public void createMod(View view) {
         //Defines
         EditText className = (EditText) findViewById(R.id.txtClassName);
-        EditText itemDescription = (EditText) findViewById(R.id.txtItemDescriptionId);
+        EditText itemDescriptionId = (EditText) findViewById(R.id.txtItemDescriptionId);
         EditText armorMaterial = (EditText) findViewById(R.id.txtArmorItemMaterial);
         EditText armorRenderType = (EditText) findViewById(R.id.txtArmorItemRenderType);
         EditText armorSlot = (EditText) findViewById(R.id.txtArmorItemSlot);
@@ -40,7 +40,7 @@ public class ArmorItemActivity extends AppCompatActivity {
 
         //Asserts
         assert className != null;
-        assert itemDescription != null;
+        assert itemDescriptionId != null;
         assert armorMaterial != null;
         assert armorRenderType != null;
         assert armorSlot != null;
@@ -51,14 +51,14 @@ public class ArmorItemActivity extends AppCompatActivity {
 
         //Strings
         String classNameTxt = className.getText().toString();
-        String itemDescriptionTxt = itemDescription.getText().toString();
+        String itemDescriptionIdTxt = itemDescriptionId.getText().toString();
         String armorMaterialTxt = armorMaterial.getText().toString();
         String armorRenderTypeTxt = armorRenderType.getText().toString();
         String armorSlotTxt = armorSlot.getText().toString();
         String itemCategoryTxt = itemCategory.getText().toString();
         String itemTextureTxt = itemTexture.getText().toString();
         String itemMaxDamageTxt = itemMaxDamage.getText().toString();
-        if(armorSlotTxt.matches("1"))
+        if (armorSlotTxt.matches("1"))
             armorSlotTxt = "HELMET";
         else if (armorSlotTxt.matches("2"))
             armorSlotTxt = "CHESTPLATE";
@@ -67,7 +67,7 @@ public class ArmorItemActivity extends AppCompatActivity {
         else if (armorSlotTxt.matches("4"))
             armorSlotTxt = "BOOTS";
 
-        if(itemCategoryTxt.matches("1"))
+        if (itemCategoryTxt.matches("1"))
             itemCategoryTxt = "BLOCKS";
         else if (itemCategoryTxt.matches("2"))
             itemCategoryTxt = "DECORATIONS";
@@ -81,10 +81,8 @@ public class ArmorItemActivity extends AppCompatActivity {
         File armorItemHeaderFile = new File(path + (classNameTxt + ".h"));
         File armorItemSourceFile = new File(path + (classNameTxt + ".cpp"));
 
-        String[] itemHeaderString = String.valueOf("#pragma once\n" +
-                "\n" +
-                "#include \"minecraftpe/world/item/ArmorItem.h\"\n" +
-                "\n" +
+        String[] itemHeaderString = String.valueOf("#pragma once\n\n" +
+                "#include \"minecraftpe/world/item/ArmorItem.h\"\n\n" +
                 "class " + classNameTxt + " : public ArmorItem {\n" +
                 "public:\n" +
                 "\t" + classNameTxt + "(short itemId);\n" +
@@ -93,9 +91,9 @@ public class ArmorItemActivity extends AppCompatActivity {
 
         String[] itemSourceString = String.valueOf("#include \"" + classNameTxt + ".h\"\n" +
                 "\n" +
-                classNameTxt + "::" + classNameTxt + "(short itemId) : Item(\"" + itemDescriptionTxt + "\", " + "itemId - 0x100, " + armorMaterialTxt + ", " + armorRenderTypeTxt + ", ArmorSlot::" + armorSlotTxt + ") {\n" +
+                classNameTxt + "::" + classNameTxt + "(short itemId) : Item(\"" + itemDescriptionIdTxt + "\", " + "itemId - 0x100, " + armorMaterialTxt + ", " + armorRenderTypeTxt + ", ArmorSlot::" + armorSlotTxt + ") {\n" +
                 "\tItem::mItems[itemId] = this;\n" +
-                "\tcreativeCategory = CreativeCategory::" + itemCategoryTxt + ";\n" +
+                "\tcreativeCategory = CreativeItemCategory::" + itemCategoryTxt + ";\n" +
                 "\tsetIcon(\"" + itemTextureTxt + "\", 0);\n" +
                 "\tsetMaxDamage(" + itemMaxDamageTxt + ");\n" +
                 "}").split(System.getProperty("line.separator"));

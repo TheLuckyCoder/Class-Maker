@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/padding"
     android:paddingRight="@dimen/padding"
-    tools:context=".ArmorItemMaker">
+    tools:context=".BlockMaker">
 
     <EditText
         android:layout_width="fill_parent"
@@ -19,74 +19,43 @@
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtItemDescriptionId"
+        android:id="@+id/txtBlockDescriptionId"
         android:gravity="center"
         android:layout_centerHorizontal="true"
-        android:hint="@string/hint_item_description_id"
+        android:hint="@string/hint_block_description_id"
         android:layout_below="@+id/txtClassName"
         android:inputType="textNoSuggestions" />
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtArmorItemMaterial"
-        android:gravity="center"
-        android:layout_centerHorizontal="true"
-        android:hint="@string/hint_item_armor_material"
-        android:layout_below="@+id/txtItemDescriptionId"
-        android:inputType="textNoSuggestions" />
-
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtArmorItemRenderType"
-        android:gravity="center"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/txtArmorItemMaterial"
-        android:hint="@string/hint_item_armor_renderindex"
-        android:inputType="number" />
-
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtArmorItemSlot"
-        android:gravity="center"
-        android:layout_centerHorizontal="true"
-        android:hint="@string/hint_item_armor_slot"
-        android:layout_below="@+id/txtArmorItemRenderType"
-        android:inputType="number" />
-
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtItemCategory"
+        android:id="@+id/txtBlockCategory"
         android:gravity="center"
         android:layout_centerHorizontal="true"
         android:hint="@string/hint_category"
-        android:layout_below="@+id/txtArmorItemSlot"
+        android:layout_below="@+id/txtBlockDescriptionId"
         android:inputType="number" />
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtItemTexture"
+        android:id="@+id/txtBlockMaterial"
         android:gravity="center"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/txtItemCategory"
-        android:hint="@string/hint_item_texture"
-        android:layout_marginTop="10dp"
+        android:hint="@string/hint_block_material"
+        android:layout_below="@+id/txtBlockCategory"
         android:inputType="textNoSuggestions" />
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtItemMaxDamage"
+        android:id="@+id/txtBlockDestroyTime"
         android:gravity="center"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/txtItemTexture"
-        android:hint="@string/hint_item_maxdamage"
+        android:layout_below="@+id/txtBlockMaterial"
+        android:hint="@string/hint_block_destroy_time"
         android:layout_marginTop="10dp"
-        android:inputType="number" />
+        android:inputType="numberDecimal" />
 
     <Button
         android:onClick="createMod"
@@ -95,7 +64,7 @@
         android:id="@+id/btnCreateMod"
         android:gravity="center"
         android:text="@string/class_create"
-        android:layout_below="@+id/txtItemMaxDamage"
+        android:layout_below="@+id/txtBlockDestroyTime"
         android:textSize="20sp"
         android:layout_marginTop="30dp" />
 </RelativeLayout>

@@ -10,7 +10,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnItem"
-        android:text="@string/class_item"
+        android:text="@string/class_item_maker"
         android:textSize="20sp"
         android:gravity="center"
         android:layout_centerHorizontal="true" />
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnItem"
         android:id="@+id/btnArmorItem"
-        android:text="@string/class_item_armor"
+        android:text="@string/class_armor_item_maker"
         android:textSize="20sp"
         android:gravity="center"
         android:layout_centerHorizontal="true" />
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnArmorItem"
         android:id="@+id/btnBlock"
-        android:text="@string/class_block"
+        android:text="@string/class_block_maker"
         android:textSize="20sp"
         android:gravity="center"
         android:layout_centerHorizontal="true" />

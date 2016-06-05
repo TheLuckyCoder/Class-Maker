@@ -22,15 +22,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void makeItemClass(View view) {
-        startActivity(new Intent(MainActivity.this, ItemActivity.class));
+        startActivity(new Intent(MainActivity.this, ItemMaker.class));
     }
 
     public void makeArmorItemClass(View view) {
-        startActivity(new Intent(MainActivity.this, ArmorItemActivity.class));
+        startActivity(new Intent(MainActivity.this, ArmorItemMaker.class));
     }
 
     public void makeBlockClass(View view) {
-        //startActivity(new Intent(MainActivity.this, BlockActivity.class));
+        startActivity(new Intent(MainActivity.this, BlockMaker.class));
     }
 
     public void checkForPermissions() {

@@ -1,21 +1,27 @@
 <resources>
     <string name="app_name">Class Maker</string>
+    <string name="item_app_name">Item - Class Maker</string>
+    <string name="armor_item_app_name">ArmorItem - Class Maker</string>
+    <string name="block_app_name">Block - Class Maker</string>
 
-    <string name="class_name">Class Name</string>
-    <string name="class_item">Item Class</string>
-    <string name="class_item_armor">Armor Item Class</string>
-    <string name="class_block">Block Class</string>
+    <string name="class_name">ClassName</string>
     <string name="class_create">Create Class</string>
     <string name="class_generated"> class generated</string>
+    <string name="class_item_maker">Item Class Maker</string>
+    <string name="class_armor_item_maker">ArmorItem Class Maker</string>
+    <string name="class_block_maker">Block Class Maker</string>
 
     <string name="hint_item_description_id">DescriptionId: itemName</string>
-    <string name="hint_item_category">Category(1 – 4)</string>
+    <string name="hint_category">Category(1 – 4)</string>
     <string name="hint_item_texture">Texture: item_name</string>
     <string name="hint_item_maxstack">Max Stack Size(1 – 64)</string>
     <string name="hint_item_armor_material">Armor Material</string>
     <string name="hint_item_armor_renderindex">Render Index</string>
     <string name="hint_item_armor_slot">Armor Slot(1 – 4)</string>
     <string name="hint_item_maxdamage">Max Damage</string>
+    <string name="hint_block_material">MaterialType(STONE)</string>
+    <string name="hint_block_description_id">DescriptionId: blockName</string>
+    <string name="hint_block_destroy_time">Destroy Time(1.0)</string>
 
     <string name="error_external_storage_permission">External storage permission required to save classes</string>
 </resources>
