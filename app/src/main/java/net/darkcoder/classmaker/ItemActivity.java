@@ -47,6 +47,14 @@ public class ItemActivity extends AppCompatActivity{
         String itemCategoryTxt = itemCategory.getText().toString();
         String itemTextureTxt = itemTexture.getText().toString();
         String itemMaxStackSizeTxt = itemMaxStackSize.getText().toString();
+        if(itemCategoryTxt.matches("1"))
+            itemCategoryTxt = "BLOCKS";
+        else if (itemCategoryTxt.matches("2"))
+            itemCategoryTxt = "DECORATIONS";
+        else if (itemCategoryTxt.matches("3"))
+            itemCategoryTxt = "TOOLS";
+        else if (itemCategoryTxt.matches("4"))
+            itemCategoryTxt = "ITEMS";
 
         //Code
         File itemHeaderFile = new File (path + (itemNameTxt + ".h"));
@@ -54,7 +62,7 @@ public class ItemActivity extends AppCompatActivity{
 
         String [] itemHeaderString = String.valueOf("#pragma once\n" +
                 "\n" +
-                "#include \"minecraftpe/world/item/Item.h\"\n" +
+                "#include \"com/mojang/minecraftpe/world/item/Item.h\"\n" +
                 "\n" +
                 "class " + itemNameTxt + " : public Item {\n" +
                 "public:\n" +

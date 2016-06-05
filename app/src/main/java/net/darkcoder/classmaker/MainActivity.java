@@ -39,8 +39,7 @@ public class MainActivity extends AppCompatActivity {
                     Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 if(shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                     Toast.makeText(this,
-                            "External storage permission required to save mods",
-                            Toast.LENGTH_SHORT).show();
+                            R.string.error_external_storage_permission, Toast.LENGTH_SHORT).show();
                 }
                 requestPermissions(new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE},
                         REQUEST_EXTERNAL_STRORAGE_RESULT);
@@ -55,8 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
             } else {
                 Toast.makeText(this,
-                        "Write external storage permission needed to save mods",
-                        Toast.LENGTH_LONG).show();
+                        R.string.error_external_storage_permission, Toast.LENGTH_LONG).show();
             }
         } else {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);

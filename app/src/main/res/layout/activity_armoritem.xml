@@ -64,7 +64,7 @@
         android:layout_centerHorizontal="true"
         android:hint="@string/hint_item_category"
         android:layout_below="@+id/txtArmorItemSlot"
-        android:inputType="textNoSuggestions" />
+        android:inputType="number" />
 
     <EditText
         android:layout_width="fill_parent"

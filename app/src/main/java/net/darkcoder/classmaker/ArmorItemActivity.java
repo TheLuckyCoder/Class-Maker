@@ -37,6 +37,7 @@ public class ArmorItemActivity extends AppCompatActivity {
         EditText itemTexture = (EditText) findViewById(R.id.txtItemTexture);
         EditText itemMaxDamage = (EditText) findViewById(R.id.txtItemMaxStackSize);
 
+
         //Asserts
         assert itemName != null;
         assert itemDescription != null;
@@ -47,6 +48,7 @@ public class ArmorItemActivity extends AppCompatActivity {
         assert itemTexture != null;
         assert itemMaxDamage != null;
 
+
         //Strings
         String itemNameTxt = itemName.getText().toString();
         String itemDescriptionTxt = itemDescription.getText().toString();
@@ -56,6 +58,24 @@ public class ArmorItemActivity extends AppCompatActivity {
         String itemCategoryTxt = itemCategory.getText().toString();
         String itemTextureTxt = itemTexture.getText().toString();
         String itemMaxDamageTxt = itemMaxDamage.getText().toString();
+        if(armorSlotTxt.matches("1"))
+            armorSlotTxt = "HELMET";
+        else if (armorSlotTxt.matches("2"))
+            armorSlotTxt = "CHESTPLATE";
+        else if (armorSlotTxt.matches("3"))
+            armorSlotTxt = "LEGGINGS";
+        else if (armorSlotTxt.matches("4"))
+            armorSlotTxt = "BOOTS";
+
+        if(itemCategoryTxt.matches("1"))
+            itemCategoryTxt = "BLOCKS";
+        else if (itemCategoryTxt.matches("2"))
+            itemCategoryTxt = "DECORATIONS";
+        else if (itemCategoryTxt.matches("3"))
+            itemCategoryTxt = "TOOLS";
+        else if (itemCategoryTxt.matches("4"))
+            itemCategoryTxt = "ITEMS";
+
 
         //Code
         File armorItemHeaderFile = new File(path + (itemNameTxt + ".h"));
@@ -73,13 +93,14 @@ public class ArmorItemActivity extends AppCompatActivity {
 
         String[] itemSourceString = String.valueOf("#include \"" + itemNameTxt + ".h\"\n" +
                 "\n" +
-                itemNameTxt + "::" + itemNameTxt + "(short itemId) : Item(\"" + itemDescriptionTxt + "\", " + "itemId - 0x100, " + armorMaterialTxt + ", " + armorRenderTypeTxt + ", ArmorSlot(" + armorSlotTxt + ")) {\n" +
+                itemNameTxt + "::" + itemNameTxt + "(short itemId) : Item(\"" + itemDescriptionTxt + "\", " + "itemId - 0x100, " + armorMaterialTxt + ", " + armorRenderTypeTxt + ", ArmorSlot::" + armorSlotTxt + ") {\n" +
                 "\tItem::mItems[itemId] = this;\n" +
                 "\tcreativeCategory = CreativeCategory::" + itemCategoryTxt + ";\n" +
                 "\tsetIcon(\"" + itemTextureTxt + "\", 0);\n" +
                 "\tsetMaxDamage(" + itemMaxDamageTxt + ");\n" +
                 "}").split(System.getProperty("line.separator"));
         Save(armorItemSourceFile, itemSourceString);
+
         Toast.makeText(getApplicationContext(), (itemNameTxt + R.string.class_generated), Toast.LENGTH_SHORT).show();
     }
 
