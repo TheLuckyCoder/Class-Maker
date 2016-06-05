@@ -9,10 +9,10 @@
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtItemName"
+        android:id="@+id/txtClassName"
         android:inputType="text"
         android:gravity="center"
-        android:hint="@string/hint_item_name"
+        android:hint="@string/class_name"
         android:textSize="20sp"
         android:layout_centerHorizontal="true"/>
 
@@ -23,7 +23,7 @@
         android:gravity="center"
         android:layout_centerHorizontal="true"
         android:hint="@string/hint_item_description_id"
-        android:layout_below="@+id/txtItemName"
+        android:layout_below="@+id/txtClassName"
         android:inputType="textNoSuggestions" />
 
     <EditText
@@ -43,7 +43,7 @@
         android:gravity="center"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/txtArmorItemMaterial"
-        android:hint="@string/hint_item_armor_rendertype"
+        android:hint="@string/hint_item_armor_renderindex"
         android:inputType="number" />
 
     <EditText

@@ -1,21 +1,21 @@
 <resources>
     <string name="app_name">Class Maker</string>
 
-    <string name="hint_item_name">ItemName</string>
-    <string name="hint_item_description_id">DescriptionId: itemName</string>
-    <string name="hint_item_category">Category(1 – 4)</string>
-    <string name="hint_item_texture">Texture: item_name</string>
-    <string name="hint_item_maxstack">Max Stack Size(1 – 64)</string>
-    <string name="hint_item_armor_material">Armor Material</string>
-    <string name="hint_item_armor_rendertype">Render Type</string>
-    <string name="hint_item_armor_slot">Armor Slot(1 – 4)</string>
-    <string name="hint_item_maxdamage">Max Damage</string>
-
+    <string name="class_name">Class Name</string>
     <string name="class_item">Item Class</string>
     <string name="class_item_armor">Armor Item Class</string>
     <string name="class_block">Block Class</string>
     <string name="class_create">Create Class</string>
     <string name="class_generated"> class generated</string>
+
+    <string name="hint_item_description_id">DescriptionId: itemName</string>
+    <string name="hint_item_category">Category(1 – 4)</string>
+    <string name="hint_item_texture">Texture: item_name</string>
+    <string name="hint_item_maxstack">Max Stack Size(1 – 64)</string>
+    <string name="hint_item_armor_material">Armor Material</string>
+    <string name="hint_item_armor_renderindex">Render Index</string>
+    <string name="hint_item_armor_slot">Armor Slot(1 – 4)</string>
+    <string name="hint_item_maxdamage">Max Damage</string>
 
     <string name="error_external_storage_permission">External storage permission required to save classes</string>
 </resources>

@@ -12,7 +12,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-
 public class ItemActivity extends AppCompatActivity{
 
     public static String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClassMaker/";
@@ -28,21 +27,21 @@ public class ItemActivity extends AppCompatActivity{
 
     public void createMod (View view) {
         //Defines
-        EditText itemName = (EditText) findViewById(R.id.txtItemName);
+        EditText className = (EditText) findViewById(R.id.txtClassName);
         EditText itemDescription = (EditText) findViewById(R.id.txtItemDescriptionId);
         EditText itemCategory = (EditText) findViewById(R.id.txtItemCategory);
         EditText itemTexture = (EditText) findViewById(R.id.txtItemTexture);
         EditText itemMaxStackSize = (EditText) findViewById(R.id.txtItemMaxStackSize);
 
         //Asserts
-        assert itemName != null;
+        assert className != null;
         assert itemDescription != null;
         assert itemCategory != null;
         assert itemTexture != null;
         assert itemMaxStackSize != null;
 
         //Strings
-        String itemNameTxt = itemName.getText().toString();
+        String classNameTxt = className.getText().toString();
         String itemDescriptionTxt = itemDescription.getText().toString();
         String itemCategoryTxt = itemCategory.getText().toString();
         String itemTextureTxt = itemTexture.getText().toString();
@@ -57,23 +56,23 @@ public class ItemActivity extends AppCompatActivity{
             itemCategoryTxt = "ITEMS";
 
         //Code
-        File itemHeaderFile = new File (path + (itemNameTxt + ".h"));
-        File itemSourceFile = new File (path + (itemNameTxt + ".cpp"));
+        File itemHeaderFile = new File (path + (classNameTxt + ".h"));
+        File itemSourceFile = new File (path + (classNameTxt + ".cpp"));
 
         String [] itemHeaderString = String.valueOf("#pragma once\n" +
                 "\n" +
                 "#include \"com/mojang/minecraftpe/world/item/Item.h\"\n" +
                 "\n" +
-                "class " + itemNameTxt + " : public Item {\n" +
+                "class " + classNameTxt + " : public Item {\n" +
                 "public:\n" +
-                "\t" + itemNameTxt + "(short itemId);\n" +
+                "\t" + classNameTxt + "(short itemId);\n" +
                 "};")
                 .split(System.getProperty("line.separator"));
         Save(itemHeaderFile, itemHeaderString);
 
-        String [] itemSourceString = String.valueOf("#include \"" + itemNameTxt + ".h\"\n" +
+        String [] itemSourceString = String.valueOf("#include \"" + classNameTxt + ".h\"\n" +
                 "\n" +
-                itemNameTxt + "::" + itemNameTxt + "(short itemId) : Item(\"" + itemDescriptionTxt + "\", " + "itemId - 0x100) {\n" +
+                classNameTxt + "::" + classNameTxt + "(short itemId) : Item(\"" + itemDescriptionTxt + "\", " + "itemId - 0x100) {\n" +
                 "\tItem::mItems[itemId] = this;\n" +
                 "\tcreativeCategory = CreativeCategory::" + itemCategoryTxt + ";\n" +
                 "\tsetIcon(\"" + itemTextureTxt + "\", 0);\n" +
@@ -81,7 +80,8 @@ public class ItemActivity extends AppCompatActivity{
                 "}")
                 .split(System.getProperty("line.separator"));
         Save(itemSourceFile, itemSourceString);
-        Toast.makeText(getApplicationContext(), (itemNameTxt + R.string.class_generated), Toast.LENGTH_SHORT).show();
+
+        Toast.makeText(getApplicationContext(), (classNameTxt + R.string.class_generated), Toast.LENGTH_SHORT).show();
     }
 
     public static void Save(File file, String[] data) {

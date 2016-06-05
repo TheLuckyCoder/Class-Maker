@@ -12,7 +12,7 @@
         android:id="@+id/txtItemName"
         android:inputType="text"
         android:gravity="center"
-        android:hint="@string/hint_item_name"
+        android:hint="@string/class_name"
         android:textSize="20sp"
         android:layout_centerHorizontal="true"/>
 

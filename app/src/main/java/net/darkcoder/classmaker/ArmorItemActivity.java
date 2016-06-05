@@ -28,7 +28,7 @@ public class ArmorItemActivity extends AppCompatActivity {
 
     public void createMod(View view) {
         //Defines
-        EditText itemName = (EditText) findViewById(R.id.txtItemName);
+        EditText className = (EditText) findViewById(R.id.txtClassName);
         EditText itemDescription = (EditText) findViewById(R.id.txtItemDescriptionId);
         EditText armorMaterial = (EditText) findViewById(R.id.txtArmorItemMaterial);
         EditText armorRenderType = (EditText) findViewById(R.id.txtArmorItemRenderType);
@@ -39,7 +39,7 @@ public class ArmorItemActivity extends AppCompatActivity {
 
 
         //Asserts
-        assert itemName != null;
+        assert className != null;
         assert itemDescription != null;
         assert armorMaterial != null;
         assert armorRenderType != null;
@@ -50,7 +50,7 @@ public class ArmorItemActivity extends AppCompatActivity {
 
 
         //Strings
-        String itemNameTxt = itemName.getText().toString();
+        String classNameTxt = className.getText().toString();
         String itemDescriptionTxt = itemDescription.getText().toString();
         String armorMaterialTxt = armorMaterial.getText().toString();
         String armorRenderTypeTxt = armorRenderType.getText().toString();
@@ -78,22 +78,22 @@ public class ArmorItemActivity extends AppCompatActivity {
 
 
         //Code
-        File armorItemHeaderFile = new File(path + (itemNameTxt + ".h"));
-        File armorItemSourceFile = new File(path + (itemNameTxt + ".cpp"));
+        File armorItemHeaderFile = new File(path + (classNameTxt + ".h"));
+        File armorItemSourceFile = new File(path + (classNameTxt + ".cpp"));
 
         String[] itemHeaderString = String.valueOf("#pragma once\n" +
                 "\n" +
                 "#include \"minecraftpe/world/item/ArmorItem.h\"\n" +
                 "\n" +
-                "class " + itemNameTxt + " : public ArmorItem {\n" +
+                "class " + classNameTxt + " : public ArmorItem {\n" +
                 "public:\n" +
-                "\t" + itemNameTxt + "(short itemId);\n" +
+                "\t" + classNameTxt + "(short itemId);\n" +
                 "};").split(System.getProperty("line.separator"));
         Save(armorItemHeaderFile, itemHeaderString);
 
-        String[] itemSourceString = String.valueOf("#include \"" + itemNameTxt + ".h\"\n" +
+        String[] itemSourceString = String.valueOf("#include \"" + classNameTxt + ".h\"\n" +
                 "\n" +
-                itemNameTxt + "::" + itemNameTxt + "(short itemId) : Item(\"" + itemDescriptionTxt + "\", " + "itemId - 0x100, " + armorMaterialTxt + ", " + armorRenderTypeTxt + ", ArmorSlot::" + armorSlotTxt + ") {\n" +
+                classNameTxt + "::" + classNameTxt + "(short itemId) : Item(\"" + itemDescriptionTxt + "\", " + "itemId - 0x100, " + armorMaterialTxt + ", " + armorRenderTypeTxt + ", ArmorSlot::" + armorSlotTxt + ") {\n" +
                 "\tItem::mItems[itemId] = this;\n" +
                 "\tcreativeCategory = CreativeCategory::" + itemCategoryTxt + ";\n" +
                 "\tsetIcon(\"" + itemTextureTxt + "\", 0);\n" +
@@ -101,7 +101,7 @@ public class ArmorItemActivity extends AppCompatActivity {
                 "}").split(System.getProperty("line.separator"));
         Save(armorItemSourceFile, itemSourceString);
 
-        Toast.makeText(getApplicationContext(), (itemNameTxt + R.string.class_generated), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), (classNameTxt + R.string.class_generated), Toast.LENGTH_SHORT).show();
     }
 
     public static void Save(File file, String[] data) {
