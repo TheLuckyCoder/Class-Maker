@@ -1,4 +1,4 @@
-package net.darkcoder.classmaker;
+package net.luckycoder.classmaker;
 
 import android.os.Bundle;
 import android.os.Environment;
@@ -28,59 +28,59 @@ public class BlockMaker extends AppCompatActivity{
     public void createMod (View view) {
         //Defines
         EditText className = (EditText) findViewById(R.id.txtClassName);
-        EditText blockDescriptionId = (EditText) findViewById(R.id.txtBlockDescriptionId);
-        EditText blockCategory = (EditText) findViewById(R.id.txtBlockCategory);
-        EditText blockMaterial = (EditText) findViewById(R.id.txtBlockMaterial);
-        EditText blockDestroyTime = (EditText) findViewById(R.id.txtBlockDestroyTime);
+        EditText descriptionId = (EditText) findViewById(R.id.txtBlockDescriptionId);
+        EditText category = (EditText) findViewById(R.id.txtBlockCategory);
+        EditText material = (EditText) findViewById(R.id.txtBlockMaterial);
+        EditText destroyTime = (EditText) findViewById(R.id.txtBlockDestroyTime);
 
 
         //Asserts
         assert className != null;
-        assert blockDescriptionId != null;
-        assert blockCategory != null;
-        assert blockMaterial != null;
-        assert blockDestroyTime != null;
+        assert descriptionId != null;
+        assert category != null;
+        assert material != null;
+        assert destroyTime != null;
 
         //Strings and Integers
         String classNameTxt = className.getText().toString();
-        String blockDescriptionIdTxt = className.getText().toString();
-        String blockCategoryTxt = blockCategory.getText().toString();
-        String blockMaterialTxt = blockMaterial.getText().toString();
-        String blockDestroyTimeTxt = blockDestroyTime.getText().toString();
+        String descriptionIdTxt = className.getText().toString();
+        String categoryTxt = category.getText().toString();
+        String materialTxt = material.getText().toString();
+        String destroyTimeTxt = destroyTime.getText().toString();
 
-        if (blockCategoryTxt.matches("1"))
-            blockCategoryTxt = "BLOCKS";
-        else if (blockCategoryTxt.matches("2"))
-            blockCategoryTxt = "DECORATIONS";
-        else if (blockCategoryTxt.matches("3"))
-            blockCategoryTxt = "TOOLS";
-        else if (blockCategoryTxt.matches("4"))
-            blockCategoryTxt = "ITEMS";
+        if (categoryTxt.matches("1"))
+            categoryTxt = "BLOCKS";
+        else if (categoryTxt.matches("2"))
+            categoryTxt = "DECORATIONS";
+        else if (categoryTxt.matches("3"))
+            categoryTxt = "TOOLS";
+        else if (categoryTxt.matches("4"))
+            categoryTxt = "ITEMS";
 
 
         //Code
-        File blockHeaderFile = new File (path + (classNameTxt + ".h"));
-        File blockSourceFile = new File (path + (classNameTxt + ".cpp"));
+        File headerFile = new File (path + (classNameTxt + ".h"));
+        File sourceFile = new File (path + (classNameTxt + ".cpp"));
 
-        String [] itemHeaderString = String.valueOf("#pragma once\n\n" +
+        String [] headerFileString = String.valueOf("#pragma once\n\n" +
                 "#include \"com/mojang/minecraftpe/world/level/block/Block.h\"\n\n" +
                 "class " + classNameTxt + " : public Block {\n" +
                 "public:\n" +
                 "\t" + classNameTxt + "(int blockId);\n" +
                 "};")
                 .split(System.getProperty("line.separator"));
-        Save(blockHeaderFile, itemHeaderString);
+        Save(headerFile, headerFileString);
 
-        String [] itemSourceString = String.valueOf("#include \"" + classNameTxt + ".h\"\n\n" +
+        String [] sourceFileString = String.valueOf("#include \"" + classNameTxt + ".h\"\n\n" +
                 "#include \"com/mojang/minecraftpe/CreativeItemCategory.h\"\n\n" +
-                classNameTxt + "::" + classNameTxt + "(int blockId) : Block(\"" + blockDescriptionIdTxt + "\", " + "blockId, Material::getMaterial(MaterialType::" + blockMaterialTxt + ")) {\n" +
-                "\tcreativeCategory = CreativeItemCategory::" + blockCategoryTxt + ";\n" +
-                "\tsetDestroyTime(" + blockDestroyTimeTxt + "F);\n" +
+                classNameTxt + "::" + classNameTxt + "(int blockId) : Block(\"" + descriptionIdTxt + "\", " + "blockId, Material::getMaterial(MaterialType::" + materialTxt + ")) {\n" +
+                "\tcreativeCategory = CreativeItemCategory::" + categoryTxt + ";\n" +
+                "\tsetDestroyTime(" + destroyTimeTxt + "F);\n" +
                 "}")
                 .split(System.getProperty("line.separator"));
-        Save(blockSourceFile, itemSourceString);
+        Save(sourceFile, sourceFileString);
 
-        Toast.makeText(getApplicationContext(), (classNameTxt + R.string.class_generated), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), (classNameTxt + ".cpp and " + classNameTxt + ".h" + R.string.successfully_generated), Toast.LENGTH_SHORT).show();
     }
 
     public static void Save(File file, String[] data) {

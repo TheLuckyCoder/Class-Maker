@@ -22,7 +22,7 @@
         android:id="@+id/txtBlockDescriptionId"
         android:gravity="center"
         android:layout_centerHorizontal="true"
-        android:hint="@string/hint_block_description_id"
+        android:hint="@string/block_description_id"
         android:layout_below="@+id/txtClassName"
         android:inputType="textNoSuggestions" />
 
@@ -32,7 +32,7 @@
         android:id="@+id/txtBlockCategory"
         android:gravity="center"
         android:layout_centerHorizontal="true"
-        android:hint="@string/hint_category"
+        android:hint="@string/category"
         android:layout_below="@+id/txtBlockDescriptionId"
         android:inputType="number" />
 
@@ -42,7 +42,7 @@
         android:id="@+id/txtBlockMaterial"
         android:gravity="center"
         android:layout_centerHorizontal="true"
-        android:hint="@string/hint_block_material"
+        android:hint="@string/block_material"
         android:layout_below="@+id/txtBlockCategory"
         android:inputType="textNoSuggestions" />
 
@@ -53,7 +53,7 @@
         android:gravity="center"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/txtBlockMaterial"
-        android:hint="@string/hint_block_destroy_time"
+        android:hint="@string/block_destroy_time"
         android:layout_marginTop="10dp"
         android:inputType="numberDecimal" />
 

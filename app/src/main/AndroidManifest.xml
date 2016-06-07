@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="net.darkcoder.classmaker">
+    package="net.luckycoder.classmaker">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -22,13 +22,13 @@
         </activity>
         <activity
             android:name=".ItemMaker"
-            android:label="@string/item_app_name" />
+            android:label="@string/item_activity" />
         <activity
             android:name=".ArmorItemMaker"
-            android:label="@string/armor_item_app_name" />
+            android:label="@string/armor_item_activity" />
         <activity
             android:name=".BlockMaker"
-            android:label="@string/block_app_name" />
+            android:label="@string/block_activity" />
     </application>
 
 </manifest>
