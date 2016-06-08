@@ -12,7 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class BlockMaker extends AppCompatActivity{
+public class BlockMaker extends AppCompatActivity {
 
     public static String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClassMaker/";
 
@@ -67,20 +67,22 @@ public class BlockMaker extends AppCompatActivity{
                 "class " + classNameTxt + " : public Block {\n" +
                 "public:\n" +
                 "\t" + classNameTxt + "(int blockId);\n" +
-                "};")
-                .split(System.getProperty("line.separator"));
-        Save(headerFile, headerFileString);
+                "};").split(System.getProperty("line.separator"));
 
         String [] sourceFileString = String.valueOf("#include \"" + classNameTxt + ".h\"\n\n" +
                 "#include \"com/mojang/minecraftpe/CreativeItemCategory.h\"\n\n" +
                 classNameTxt + "::" + classNameTxt + "(int blockId) : Block(\"" + descriptionIdTxt + "\", " + "blockId, Material::getMaterial(MaterialType::" + materialTxt + ")) {\n" +
                 "\tcreativeCategory = CreativeItemCategory::" + categoryTxt + ";\n" +
                 "\tsetDestroyTime(" + destroyTimeTxt + "F);\n" +
-                "}")
-                .split(System.getProperty("line.separator"));
-        Save(sourceFile, sourceFileString);
+                "}").split(System.getProperty("line.separator"));
 
-        Toast.makeText(getApplicationContext(), (classNameTxt + ".cpp and " + classNameTxt + ".h" + R.string.successfully_generated), Toast.LENGTH_SHORT).show();
+        if (!classNameTxt.matches("")) {
+            Save(headerFile, headerFileString);
+            Save(sourceFile, sourceFileString);
+            Toast.makeText(getApplicationContext(), (classNameTxt + ".cpp" + R.string.and + classNameTxt + ".h" + R.string.successfully_generated), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), R.string.error_empty_mod_name, Toast.LENGTH_SHORT).show();
+        }
     }
 
     public static void Save(File file, String[] data) {

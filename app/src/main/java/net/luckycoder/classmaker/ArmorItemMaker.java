@@ -78,7 +78,8 @@ public class ArmorItemMaker extends AppCompatActivity {
         String armorSlotTxt = armorSlot.getText().toString();
         String categoryTxt = category.getText().toString();
         String textureTxt = texture.getText().toString();
-        int maxDamageTxt = Integer.parseInt(maxDamage.getText().toString());
+        String maxDamageTxt = "";
+        int maxDamageInt;
 
         if (armorSlotTxt.matches("1"))
             armorSlotTxt = "HELMET";
@@ -98,41 +99,38 @@ public class ArmorItemMaker extends AppCompatActivity {
         else if (categoryTxt.matches("4"))
             categoryTxt = "ITEMS";
 
+        if (customMaxDamage) {
+            maxDamageInt = Integer.parseInt(maxDamage.getText().toString());
+            maxDamageTxt = "\tsetMaxDamage(" + maxDamageInt + ");\n";
+        }
+
 
         //Code
         File headerFile = new File(path + (classNameTxt + ".h"));
         File sourceFile = new File(path + (classNameTxt + ".cpp"));
 
-        String[] itemHeaderString = String.valueOf("#pragma once\n\n" +
+        String [] headerFileString = String.valueOf("#pragma once\n\n" +
                 "#include \"com/mojang/minecraftpe/world/item/ArmorItem.h\"\n\n" +
                 "class " + classNameTxt + " : public ArmorItem {\n" +
                 "public:\n" +
                 "\t" + classNameTxt + "(short itemId);\n" +
                 "};").split(System.getProperty("line.separator"));
-        Save(headerFile, itemHeaderString);
 
-        if (customMaxDamage) {
-            String[] sourceFileString = String.valueOf("#include \"" + classNameTxt + ".h\"\n" +
-                    "\n" +
-                    classNameTxt + "::" + classNameTxt + "(short itemId) : Item(\"" + descriptionIdTxt + "\", " + "itemId - 0x100, " + armorMaterialTxt + ", " + armorRenderTypeTxt + ", ArmorSlot::" + armorSlotTxt + ") {\n" +
-                    "\tItem::mItems[itemId] = this;\n" +
-                    "\tcreativeCategory = CreativeItemCategory::" + categoryTxt + ";\n" +
-                    "\tsetIcon(\"" + textureTxt + "\", 0);\n" +
-                    "\tsetMaxDamage(" + maxDamageTxt + ");\n" +
-                    "}").split(System.getProperty("line.separator"));
+        String [] sourceFileString = String.valueOf("#include \"" + classNameTxt + ".h\"\n\n" +
+            classNameTxt + "::" + classNameTxt + "(short itemId) : Item(\"" + descriptionIdTxt + "\", " + "itemId - 0x100, " + armorMaterialTxt + ", " + armorRenderTypeTxt + ", ArmorSlot::" + armorSlotTxt + ") {\n" +
+            "\tItem::mItems[itemId] = this;\n" +
+            "\tcreativeCategory = CreativeItemCategory::" + categoryTxt + ";\n" +
+            "\tsetIcon(\"" + textureTxt + "\", 0);\n" +
+            maxDamageTxt +
+            "}").split(System.getProperty("line.separator"));
+
+        if (!classNameTxt.matches("")) {
+            Save(headerFile, headerFileString);
             Save(sourceFile, sourceFileString);
+            Toast.makeText(getApplicationContext(), (classNameTxt + ".cpp" + R.string.and + classNameTxt + ".h" + R.string.successfully_generated), Toast.LENGTH_SHORT).show();
         } else {
-            String[] sourceFileString = String.valueOf("#include \"" + classNameTxt + ".h\"\n" +
-                    "\n" +
-                    classNameTxt + "::" + classNameTxt + "(short itemId) : Item(\"" + descriptionIdTxt + "\", " + "itemId - 0x100, " + armorMaterialTxt + ", " + armorRenderTypeTxt + ", ArmorSlot::" + armorSlotTxt + ") {\n" +
-                    "\tItem::mItems[itemId] = this;\n" +
-                    "\tcreativeCategory = CreativeItemCategory::" + categoryTxt + ";\n" +
-                    "\tsetIcon(\"" + textureTxt + "\", 0);\n" +
-                    "}").split(System.getProperty("line.separator"));
-            Save(sourceFile, sourceFileString);
+            Toast.makeText(getApplicationContext(), R.string.error_empty_mod_name, Toast.LENGTH_SHORT).show();
         }
-
-        Toast.makeText(getApplicationContext(), (classNameTxt + ".cpp and " + classNameTxt + ".h" + R.string.successfully_generated), Toast.LENGTH_SHORT).show();
     }
 
     public static void Save(File file, String[] data) {

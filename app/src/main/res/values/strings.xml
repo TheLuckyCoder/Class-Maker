@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name">Class Maker</string>
+
     <string name="item_activity">Item - Class Maker</string>
     <string name="armor_item_activity">Armor Item - Class Maker</string>
     <string name="block_activity">Block - Class Maker</string>
 
     <string name="class_name">ClassName</string>
     <string name="class_create">Create Class</string>
-    <string name="successfully_generated"> were succesfully generated</string>
+    <string name="successfully_generated"> were successfully generated</string>
     <string name="class_item_maker">Item Class</string>
     <string name="class_armor_item_maker">Armor Item Class</string>
     <string name="class_block_maker">Block Class</string>
@@ -22,9 +23,11 @@
     <string name="block_material">MaterialType(STONE)</string>
     <string name="block_description_id">DescriptionId: blockName</string>
     <string name="block_destroy_time">Destroy Time(1.0)</string>
-
     <string name="custom_max_stack_size">Custom Max Stack Size</string>
     <string name="custom_max_damage">Custom Max Damage</string>
+    <string name="stacked_by_data">Stacked By Data</string>
+    <string name="and"> and </string>
 
     <string name="error_external_storage_permission">External storage permission required to save classes!</string>
+    <string name="error_empty_mod_name">Error: Mod Name is empty</string>
 </resources>
