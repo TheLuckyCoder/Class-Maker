@@ -8,6 +8,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -16,6 +19,9 @@ import java.io.IOException;
 public class ItemMaker extends AppCompatActivity {
 
     public static String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClassMaker/";
+
+    private AdView mAdView;
+
     boolean customMaxStackSize = false;
     boolean stackedByData = false;
 
@@ -23,6 +29,10 @@ public class ItemMaker extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
+
+        mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         File dir = new File(path);
         dir.mkdirs();
@@ -154,5 +164,30 @@ public class ItemMaker extends AppCompatActivity {
             }
             catch (IOException e) {e.printStackTrace();}
         }
+    }
+
+    /// ADS ///
+    @Override
+    public void onPause() {
+        if (mAdView != null) {
+            mAdView.pause();
+        }
+        super.onPause();
+    }
+    /** Called when returning to the activity */
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mAdView != null) {
+            mAdView.resume();
+        }
+    }
+    /** Called before the activity is destroyed */
+    @Override
+    public void onDestroy() {
+        if (mAdView != null) {
+            mAdView.destroy();
+        }
+        super.onDestroy();
     }
 }

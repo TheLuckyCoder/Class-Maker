@@ -1,70 +1,85 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/padding"
-    android:paddingRight="@dimen/padding"
     tools:context=".BlockMaker">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:paddingLeft="@dimen/padding"
+            android:paddingRight="@dimen/padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <EditText
-        android:layout_width="fill_parent"
+            <MaterialEditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtClassName"
+                android:hint="@string/class_name"
+                android:textSize="20sp"
+                android:layout_centerHorizontal="true"
+                android:inputType="textNoSuggestions"
+                app:floatingLabel="true" />
+
+            <MaterialEditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtBlockDescriptionId"
+                android:layout_centerHorizontal="true"
+                android:hint="@string/block_description_id"
+                android:layout_below="@+id/txtClassName"
+                android:inputType="textNoSuggestions" />
+
+            <MaterialEditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtBlockCategory"
+                android:layout_centerHorizontal="true"
+                android:hint="@string/category"
+                android:layout_below="@+id/txtBlockDescriptionId"
+                android:inputType="number" />
+
+            <MaterialEditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtBlockMaterial"
+                android:layout_centerHorizontal="true"
+                android:hint="@string/block_material"
+                android:layout_below="@+id/txtBlockCategory"
+                android:inputType="textNoSuggestions" />
+
+            <MaterialEditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtBlockDestroyTime"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/txtBlockMaterial"
+                android:hint="@string/block_destroy_time"
+                android:inputType="numberDecimal" />
+
+            <Button
+                android:onClick="createMod"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnCreateMod"
+                android:gravity="center"
+                android:text="@string/class_create"
+                android:layout_below="@+id/txtBlockDestroyTime"
+                android:textSize="20sp"
+                android:layout_marginTop="30dp" />
+        </RelativeLayout>
+    </ScrollView>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtClassName"
-        android:gravity="center"
-        android:hint="@string/class_name"
-        android:textSize="20sp"
         android:layout_centerHorizontal="true"
-        android:inputType="textNoSuggestions" />
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id"
+        android:layout_alignParentBottom="true" />
 
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtBlockDescriptionId"
-        android:gravity="center"
-        android:layout_centerHorizontal="true"
-        android:hint="@string/block_description_id"
-        android:layout_below="@+id/txtClassName"
-        android:inputType="textNoSuggestions" />
-
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtBlockCategory"
-        android:gravity="center"
-        android:layout_centerHorizontal="true"
-        android:hint="@string/category"
-        android:layout_below="@+id/txtBlockDescriptionId"
-        android:inputType="number" />
-
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtBlockMaterial"
-        android:gravity="center"
-        android:layout_centerHorizontal="true"
-        android:hint="@string/block_material"
-        android:layout_below="@+id/txtBlockCategory"
-        android:inputType="textNoSuggestions" />
-
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtBlockDestroyTime"
-        android:gravity="center"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/txtBlockMaterial"
-        android:hint="@string/block_destroy_time"
-        android:layout_marginTop="10dp"
-        android:inputType="numberDecimal" />
-
-    <Button
-        android:onClick="createMod"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnCreateMod"
-        android:gravity="center"
-        android:text="@string/class_create"
-        android:layout_below="@+id/txtBlockDestroyTime"
-        android:textSize="20sp"
-        android:layout_marginTop="30dp" />
 </RelativeLayout>

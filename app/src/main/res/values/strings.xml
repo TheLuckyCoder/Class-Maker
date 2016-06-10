@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Class Maker</string>
+    <string name="banner_ad_unit_id">ca-app-pub-1279472163660969/4474209139</string>
 
     <string name="item_activity">Item - Class Maker</string>
     <string name="armor_item_activity">Armor Item - Class Maker</string>
@@ -12,17 +13,18 @@
     <string name="class_armor_item_maker">Armor Item Class</string>
     <string name="class_block_maker">Block Class</string>
 
-    <string name="item_description_id">DescriptionId: itemName</string>
-    <string name="category">Category(1 – 4)</string>
+    <string name="item_description_id">Description Id: itemName</string>
+    <string name="category">Inventory Category: 1 – 4</string>
     <string name="item_texture">Texture: item_name</string>
-    <string name="item_max_stack_size">Max Stack Size(1 – 64)</string>
+    <string name="item_max_stack_size">Max Stack Size: 1 – 64</string>
     <string name="item_armor_material">Armor Material</string>
     <string name="item_armor_render_index">Render Index</string>
-    <string name="item_armor_slot">Armor Slot(1 – 4)</string>
+    <string name="item_armor_slot">Armor Slot: 1 – 4</string>
     <string name="item_max_damage">Max Damage</string>
-    <string name="block_material">MaterialType(STONE)</string>
-    <string name="block_description_id">DescriptionId: blockName</string>
-    <string name="block_destroy_time">Destroy Time(1.0)</string>
+    <string name="block_material">Material Type: STONE</string>
+    <string name="block_description_id">Description Id: blockName</string>
+    <string name="block_destroy_time">Destroy Time: 1.0</string>
+
     <string name="custom_max_stack_size">Custom Max Stack Size</string>
     <string name="custom_max_damage">Custom Max Damage</string>
     <string name="stacked_by_data">Stacked By Data</string>
