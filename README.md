@@ -1,4 +1,6 @@
 # Class Maker
 This app generates Item and Block classes to help native modders code faster.
 
-Icon made by Freepik(www.freepik.com)
+App icon made by [Freepik](freepik.com)
+
+Class Maker uses Eric Truong's [Material Design EditText](github.com/Pombo/material-edit-text)
