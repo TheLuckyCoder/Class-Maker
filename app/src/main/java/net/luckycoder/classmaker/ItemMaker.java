@@ -3,6 +3,7 @@ package net.luckycoder.classmaker;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -10,6 +11,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+
+import net.luckycoder.classmaker.utils.Utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -29,6 +32,8 @@ public class ItemMaker extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -126,44 +131,24 @@ public class ItemMaker extends AppCompatActivity {
                 "}").split(System.getProperty("line.separator"));
 
         if (!classNameTxt.matches("")) {
-            Save(headerFile, headerFileString);
-            Save(sourceFile, sourceFileString);
+            Utils.Save(headerFile, headerFileString);
+            Utils.Save(sourceFile, sourceFileString);
             Toast.makeText(getApplicationContext(), (classNameTxt + ".cpp" + R.string.and + classNameTxt + ".h" + R.string.successfully_generated), Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(getApplicationContext(), R.string.error_empty_mod_name, Toast.LENGTH_SHORT).show();
         }
     }
 
-    public static void Save(File file, String[] data) {
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream(file);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        catch (FileNotFoundException e) {e.printStackTrace();}
-        try {
-            try {
-                for (int i = 0; i<data.length; i++) {
-                    if (fos != null) {
-                        fos.write(data[i].getBytes());
-                    }
-                    if (i < data.length-1)
-                    {
-                        if (fos != null) {
-                            fos.write("\n".getBytes());
-                        }
-                    }
-                }
-            }
-            catch (IOException e) {e.printStackTrace();}
-        }
-        finally {
-            try {
-                if (fos != null) {
-                    fos.close();
-                }
-            }
-            catch (IOException e) {e.printStackTrace();}
-        }
+        return super.onOptionsItemSelected(item);
     }
 
     /// ADS ///
