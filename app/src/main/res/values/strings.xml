@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Class Maker</string>
-    <string name="banner_ad_unit_id">ca-app-pub-1279472163660969/4474209139</string>
 
     <string name="item_activity">Item - Class Maker</string>
     <string name="armor_item_activity">Armor Item - Class Maker</string>

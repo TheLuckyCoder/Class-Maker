@@ -1,124 +1,110 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ArmorItemMaker">
-    <ScrollView
+
+    <RelativeLayout
+        android:paddingLeft="@dimen/padding"
+        android:paddingRight="@dimen/padding"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <RelativeLayout
-            android:paddingLeft="@dimen/padding"
-            android:paddingRight="@dimen/padding"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        android:layout_height="wrap_content">
 
-            <MaterialEditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtClassName"
-                android:hint="@string/class_name"
-                android:textSize="20sp"
-                android:layout_centerHorizontal="true"
-                android:inputType="textNoSuggestions"
-                app:floatingLabel="true" />
+        <MaterialEditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtClassName"
+            android:hint="@string/class_name"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:inputType="textNoSuggestions"
+            app:floatingLabel="true" />
 
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/custom_max_damage"
-                android:id="@+id/checkCustomMaxDamage"
-                android:layout_below="@+id/txtClassName"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:onClick="onCheckboxClicked"
-                android:textSize="18sp" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/custom_max_damage"
+            android:id="@+id/checkCustomMaxDamage"
+            android:layout_below="@+id/txtClassName"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:onClick="onCheckboxClicked"
+            android:textSize="18sp" />
 
-            <MaterialEditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtItemDescriptionId"
-                android:layout_centerHorizontal="true"
-                android:hint="@string/item_description_id"
-                android:layout_below="@+id/checkCustomMaxDamage"
-                android:inputType="textNoSuggestions" />
+        <MaterialEditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtItemDescriptionId"
+            android:layout_centerHorizontal="true"
+            android:hint="@string/item_description_id"
+            android:layout_below="@+id/checkCustomMaxDamage"
+            android:inputType="textNoSuggestions" />
 
-            <MaterialEditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtArmorItemMaterial"
-                android:layout_centerHorizontal="true"
-                android:hint="@string/item_armor_material"
-                android:layout_below="@+id/txtItemDescriptionId"
-                android:inputType="textNoSuggestions" />
+        <MaterialEditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtArmorItemMaterial"
+            android:layout_centerHorizontal="true"
+            android:hint="@string/item_armor_material"
+            android:layout_below="@+id/txtItemDescriptionId"
+            android:inputType="textNoSuggestions" />
 
-            <MaterialEditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtArmorItemRenderType"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/txtArmorItemMaterial"
-                android:hint="@string/item_armor_render_index"
-                android:inputType="number" />
+        <MaterialEditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtArmorItemRenderType"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/txtArmorItemMaterial"
+            android:hint="@string/item_armor_render_index"
+            android:inputType="number" />
 
-            <MaterialEditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtArmorItemSlot"
-                android:layout_centerHorizontal="true"
-                android:hint="@string/item_armor_slot"
-                android:layout_below="@+id/txtArmorItemRenderType"
-                android:inputType="number" />
+        <MaterialEditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtArmorItemSlot"
+            android:layout_centerHorizontal="true"
+            android:hint="@string/item_armor_slot"
+            android:layout_below="@+id/txtArmorItemRenderType"
+            android:inputType="number" />
 
-            <MaterialEditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtItemCategory"
-                android:layout_centerHorizontal="true"
-                android:hint="@string/category"
-                android:layout_below="@+id/txtArmorItemSlot"
-                android:inputType="number" />
+        <MaterialEditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtItemCategory"
+            android:layout_centerHorizontal="true"
+            android:hint="@string/category"
+            android:layout_below="@+id/txtArmorItemSlot"
+            android:inputType="number" />
 
-            <MaterialEditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtItemTexture"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/txtItemCategory"
-                android:hint="@string/item_texture"
-                android:inputType="textNoSuggestions" />
+        <MaterialEditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtItemTexture"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/txtItemCategory"
+            android:hint="@string/item_texture"
+            android:inputType="textNoSuggestions" />
 
-            <MaterialEditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtItemMaxDamage"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/txtItemTexture"
-                android:hint="@string/item_max_damage"
-                android:inputType="number"
-                android:visibility="gone" />
+        <MaterialEditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtItemMaxDamage"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/txtItemTexture"
+            android:hint="@string/item_max_damage"
+            android:inputType="number"
+            android:visibility="gone" />
 
-            <Button
-                android:onClick="createMod"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnCreateMod"
-                android:gravity="center"
-                android:text="@string/class_create"
-                android:layout_below="@+id/txtItemMaxDamage"
-                android:textSize="20sp"
-                android:layout_marginTop="30dp" />
-        </RelativeLayout>
-    </ScrollView>
-
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        ads:adSize="SMART_BANNER"
-        ads:adUnitId="@string/banner_ad_unit_id"
-        android:layout_alignParentBottom="true" />
-
-</RelativeLayout>
+        <Button
+            android:onClick="createMod"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnCreateMod"
+            android:gravity="center"
+            android:text="@string/class_create"
+            android:layout_below="@+id/txtItemMaxDamage"
+            android:textSize="20sp"
+            android:layout_marginTop="30dp" />
+    </RelativeLayout>
+</ScrollView>

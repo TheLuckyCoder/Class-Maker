@@ -1,7 +1,6 @@
-package net.luckycoder.classmaker;
+package com.smartdev.classmaker;
 
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -9,21 +8,11 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-
-import net.luckycoder.classmaker.utils.Utils;
+import com.smartdev.classmaker.utils.Utils;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 public class ItemMaker extends AppCompatActivity {
-
-    public static String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClassMaker/";
-
-    private AdView mAdView;
 
     boolean customMaxStackSize = false;
     boolean stackedByData = false;
@@ -35,11 +24,7 @@ public class ItemMaker extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-
-        File dir = new File(path);
+        File dir = new File(Utils.path);
         dir.mkdirs();
     }
 
@@ -50,7 +35,7 @@ public class ItemMaker extends AppCompatActivity {
         assert maxStackSize != null;
 
         // Check which checkbox was clicked
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.checkCustomStackSize:
                 if (checked) {
                     maxStackSize.setVisibility(View.VISIBLE);
@@ -63,7 +48,7 @@ public class ItemMaker extends AppCompatActivity {
         }
     }
 
-    public void createMod (View view) {
+    public void createMod(View view) {
         //Defines
         EditText className = (EditText) findViewById(R.id.txtClassName);
         EditText descriptionId = (EditText) findViewById(R.id.txtItemDescriptionId);
@@ -111,10 +96,10 @@ public class ItemMaker extends AppCompatActivity {
 
 
         //Code
-        File headerFile = new File (path + (classNameTxt + ".h"));
-        File sourceFile = new File (path + (classNameTxt + ".cpp"));
+        File headerFile = new File(Utils.path + (classNameTxt + ".h"));
+        File sourceFile = new File(Utils.path + (classNameTxt + ".cpp"));
 
-        String [] headerFileString = String.valueOf("#pragma once\n\n" +
+        String[] headerFileString = String.valueOf("#pragma once\n\n" +
                 "#include \"com/mojang/minecraftpe/world/item/Item.h\"\n\n" +
                 "class " + classNameTxt + " : public Item {\n" +
                 "public:\n" +
@@ -141,7 +126,7 @@ public class ItemMaker extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
                 break;
@@ -149,30 +134,5 @@ public class ItemMaker extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    /// ADS ///
-    @Override
-    public void onPause() {
-        if (mAdView != null) {
-            mAdView.pause();
-        }
-        super.onPause();
-    }
-    /** Called when returning to the activity */
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (mAdView != null) {
-            mAdView.resume();
-        }
-    }
-    /** Called before the activity is destroyed */
-    @Override
-    public void onDestroy() {
-        if (mAdView != null) {
-            mAdView.destroy();
-        }
-        super.onDestroy();
     }
 }

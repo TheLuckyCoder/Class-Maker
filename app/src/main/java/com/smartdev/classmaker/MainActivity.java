@@ -1,4 +1,4 @@
-package net.luckycoder.classmaker;
+package com.smartdev.classmaker;
 
 import android.Manifest;
 import android.content.Intent;

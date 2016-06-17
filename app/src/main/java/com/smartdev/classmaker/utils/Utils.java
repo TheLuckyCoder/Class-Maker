@@ -1,4 +1,6 @@
-package net.luckycoder.classmaker.utils;
+package com.smartdev.classmaker.utils;
+
+import android.os.Environment;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,6 +8,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Utils {
+
+    public static String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClassMaker/";
 
     public static void Save(File file, String[] data) {
         FileOutputStream fos = null;
