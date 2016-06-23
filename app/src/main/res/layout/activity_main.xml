@@ -2,10 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="net.darkcoder.classmaker.MainActivity">
+    android:padding="@dimen/padding"
+    tools:context=".MainActivity">
 
     <Button
-        android:layout_margin="@dimen/padding"
+        android:layout_marginTop="@dimen/margin"
         android:onClick="makeItemClass"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -16,7 +17,7 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_margin="@dimen/padding"
+        android:layout_marginTop="@dimen/margin"
         android:onClick="makeArmorItemClass"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -28,7 +29,7 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_margin="@dimen/padding"
+        android:layout_marginTop="@dimen/margin"
         android:onClick="makeBlockClass"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

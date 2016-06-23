@@ -3,98 +3,136 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/padding"
     tools:context=".ArmorItemMaker">
 
     <RelativeLayout
-        android:paddingLeft="@dimen/padding"
-        android:paddingRight="@dimen/padding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <MaterialEditText
-            android:layout_width="fill_parent"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtClassName"
-            android:hint="@string/class_name"
-            android:textSize="20sp"
-            android:layout_centerHorizontal="true"
-            android:inputType="textNoSuggestions"
-            app:floatingLabel="true" />
+            android:id="@+id/classNameLayout">
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/armorItemClassNameTxt"
+                android:hint="@string/class_name"
+                android:textSize="20sp"
+                android:layout_centerHorizontal="true"
+                android:inputType="textNoSuggestions" />
+        </android.support.design.widget.TextInputLayout>
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/custom_max_damage"
-            android:id="@+id/checkCustomMaxDamage"
-            android:layout_below="@+id/txtClassName"
+            android:id="@+id/customMaxDamageCheck"
+            android:layout_below="@+id/classNameLayout"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:onClick="onCheckboxClicked"
             android:textSize="18sp" />
 
-        <MaterialEditText
-            android:layout_width="fill_parent"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtItemDescriptionId"
-            android:layout_centerHorizontal="true"
-            android:hint="@string/item_description_id"
-            android:layout_below="@+id/checkCustomMaxDamage"
-            android:inputType="textNoSuggestions" />
+            android:id="@+id/itemDescriptionIdLayout"
+            android:layout_below="@+id/customMaxDamageCheck">
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/armorItemDescriptionIdTxt"
+                android:layout_centerHorizontal="true"
+                android:hint="@string/description_id"
+                android:inputType="textNoSuggestions" />
+        </android.support.design.widget.TextInputLayout>
 
-        <MaterialEditText
-            android:layout_width="fill_parent"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtArmorItemMaterial"
-            android:layout_centerHorizontal="true"
-            android:hint="@string/item_armor_material"
-            android:layout_below="@+id/txtItemDescriptionId"
-            android:inputType="textNoSuggestions" />
+            android:id="@+id/armorMaterialLayout"
+            android:layout_below="@+id/itemDescriptionIdLayout">
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/armorMaterialTxt"
+                android:layout_centerHorizontal="true"
+                android:hint="@string/item_armor_material"
+                android:inputType="textNoSuggestions" />
+        </android.support.design.widget.TextInputLayout>
 
-        <MaterialEditText
-            android:layout_width="fill_parent"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtArmorItemRenderType"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/txtArmorItemMaterial"
-            android:hint="@string/item_armor_render_index"
-            android:inputType="number" />
+            android:id="@+id/armorRenderTypeLayout"
+            android:layout_below="@+id/armorMaterialLayout">
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/armorRenderTypeTxt"
+                android:layout_centerHorizontal="true"
+                android:hint="@string/item_armor_render_index"
+                android:inputType="number" />
+        </android.support.design.widget.TextInputLayout>
 
-        <MaterialEditText
-            android:layout_width="fill_parent"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtArmorItemSlot"
-            android:layout_centerHorizontal="true"
-            android:hint="@string/item_armor_slot"
-            android:layout_below="@+id/txtArmorItemRenderType"
-            android:inputType="number" />
+            android:id="@+id/armorSlotLayout"
+            android:layout_below="@+id/armorRenderTypeLayout">
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/armorSlotTxt"
+                android:layout_centerHorizontal="true"
+                android:hint="@string/item_armor_slot"
+                android:inputType="number" />
+        </android.support.design.widget.TextInputLayout>
 
-        <MaterialEditText
-            android:layout_width="fill_parent"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtItemCategory"
-            android:layout_centerHorizontal="true"
-            android:hint="@string/category"
-            android:layout_below="@+id/txtArmorItemSlot"
-            android:inputType="number" />
+            android:id="@+id/armorItemCategoryLayout"
+            android:layout_below="@+id/armorSlotLayout">
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/armorItemCategoryTxt"
+                android:layout_centerHorizontal="true"
+                android:hint="@string/category"
+                android:inputType="number" />
+        </android.support.design.widget.TextInputLayout>
 
-        <MaterialEditText
-            android:layout_width="fill_parent"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtItemTexture"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/txtItemCategory"
-            android:hint="@string/item_texture"
-            android:inputType="textNoSuggestions" />
+            android:id="@+id/armorItemTextureLayout"
+            android:layout_below="@+id/armorItemCategoryLayout">
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/armorItemTextureTxt"
+                android:layout_centerHorizontal="true"
+                android:hint="@string/item_texture"
+                android:inputType="textNoSuggestions" />
+        </android.support.design.widget.TextInputLayout>
 
-        <MaterialEditText
-            android:layout_width="fill_parent"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtItemMaxDamage"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/txtItemTexture"
-            android:hint="@string/item_max_damage"
-            android:inputType="number"
-            android:visibility="gone" />
+            android:id="@+id/armorItemMaxDamageLayout"
+            android:layout_below="@+id/armorItemTextureLayout">
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/armorItemMaxDamageTxt"
+                android:layout_centerHorizontal="true"
+                android:hint="@string/item_max_damage"
+                android:inputType="number"
+                android:visibility="gone" />
+        </android.support.design.widget.TextInputLayout>
 
         <Button
             android:onClick="createMod"
@@ -103,7 +141,7 @@
             android:id="@+id/btnCreateMod"
             android:gravity="center"
             android:text="@string/class_create"
-            android:layout_below="@+id/txtItemMaxDamage"
+            android:layout_below="@+id/armorItemMaxDamageLayout"
             android:textSize="20sp"
             android:layout_marginTop="30dp" />
     </RelativeLayout>

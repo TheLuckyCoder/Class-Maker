@@ -1,11 +1,11 @@
 package com.smartdev.classmaker;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.smartdev.classmaker.utils.Utils;
 
@@ -26,11 +26,11 @@ public class BlockMaker extends AppCompatActivity {
 
     public void createMod (View view) {
         //Defines
-        EditText className = (EditText) findViewById(R.id.txtClassName);
-        EditText descriptionId = (EditText) findViewById(R.id.txtBlockDescriptionId);
-        EditText category = (EditText) findViewById(R.id.txtBlockCategory);
-        EditText material = (EditText) findViewById(R.id.txtBlockMaterial);
-        EditText destroyTime = (EditText) findViewById(R.id.txtBlockDestroyTime);
+        EditText className = (EditText) findViewById(R.id.blockClassNameTxt);
+        EditText descriptionId = (EditText) findViewById(R.id.blockDescriptionIdTxt);
+        EditText category = (EditText) findViewById(R.id.blockCategoryTxt);
+        EditText material = (EditText) findViewById(R.id.blockMaterialTxt);
+        EditText destroyTime = (EditText) findViewById(R.id.blockDestroyTimeTxt);
 
 
         //Asserts
@@ -78,9 +78,9 @@ public class BlockMaker extends AppCompatActivity {
         if (!classNameTxt.matches("")) {
             Utils.Save(headerFile, headerFileString);
             Utils.Save(sourceFile, sourceFileString);
-            Toast.makeText(getApplicationContext(), (classNameTxt + ".cpp" + R.string.and + classNameTxt + ".h" + R.string.successfully_generated), Toast.LENGTH_SHORT).show();
+            Snackbar.make(view, (classNameTxt + R.string.class_successfully_generated), Snackbar.LENGTH_LONG).show();
         } else {
-            Toast.makeText(getApplicationContext(), R.string.error_empty_mod_name, Toast.LENGTH_SHORT).show();
+            Snackbar.make(view, R.string.error_empty_mod_name, Snackbar.LENGTH_LONG).show();
         }
     }
 

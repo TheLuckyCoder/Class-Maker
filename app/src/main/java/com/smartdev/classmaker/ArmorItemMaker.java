@@ -1,12 +1,12 @@
 package com.smartdev.classmaker;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.smartdev.classmaker.utils.Utils;
 
@@ -30,12 +30,12 @@ public class ArmorItemMaker extends AppCompatActivity {
     public void onCheckboxClicked(View view) {
         boolean checked = ((CheckBox) view).isChecked();
 
-        EditText maxDamage = (EditText) findViewById(R.id.txtItemMaxDamage);
+        EditText maxDamage = (EditText) findViewById(R.id.armorItemMaxDamageTxt);
         assert maxDamage != null;
 
         // Check which checkbox was clicked
         switch(view.getId()) {
-            case R.id.checkCustomMaxDamage:
+            case R.id.customMaxDamageCheck:
                 if (checked) {
                     maxDamage.setVisibility(View.VISIBLE);
                     customMaxDamage = true;
@@ -49,14 +49,14 @@ public class ArmorItemMaker extends AppCompatActivity {
 
     public void createMod(View view) {
         //Defines
-        EditText className = (EditText) findViewById(R.id.txtClassName);
-        EditText descriptionId = (EditText) findViewById(R.id.txtItemDescriptionId);
-        EditText armorMaterial = (EditText) findViewById(R.id.txtArmorItemMaterial);
-        EditText armorRenderType = (EditText) findViewById(R.id.txtArmorItemRenderType);
-        EditText armorSlot = (EditText) findViewById(R.id.txtArmorItemSlot);
-        EditText category = (EditText) findViewById(R.id.txtItemCategory);
-        EditText texture = (EditText) findViewById(R.id.txtItemTexture);
-        EditText maxDamage = (EditText) findViewById(R.id.txtItemMaxStackSize);
+        EditText className = (EditText) findViewById(R.id.armorItemClassNameTxt);
+        EditText descriptionId = (EditText) findViewById(R.id.armorItemDescriptionIdTxt);
+        EditText armorMaterial = (EditText) findViewById(R.id.armorMaterialTxt);
+        EditText armorRenderType = (EditText) findViewById(R.id.armorRenderTypeTxt);
+        EditText armorSlot = (EditText) findViewById(R.id.armorSlotTxt);
+        EditText category = (EditText) findViewById(R.id.armorItemCategoryTxt);
+        EditText texture = (EditText) findViewById(R.id.armorItemTextureTxt);
+        EditText maxDamage = (EditText) findViewById(R.id.armorItemMaxDamageTxt);
 
 
         //Asserts
@@ -120,16 +120,16 @@ public class ArmorItemMaker extends AppCompatActivity {
             classNameTxt + "::" + classNameTxt + "(short itemId) : Item(\"" + descriptionIdTxt + "\", " + "itemId - 0x100, " + armorMaterialTxt + ", " + armorRenderTypeTxt + ", ArmorSlot::" + armorSlotTxt + ") {\n" +
             "\tItem::mItems[itemId] = this;\n" +
             "\tcreativeCategory = CreativeItemCategory::" + categoryTxt + ";\n" +
-            "\tsetIcon(\"" + textureTxt + "\", 0);\n" +
+            "\tsetIcon( + textureTxt + );\n" +
             maxDamageTxt +
             "}").split(System.getProperty("line.separator"));
 
         if (!classNameTxt.matches("")) {
             Utils.Save(headerFile, headerFileString);
             Utils.Save(sourceFile, sourceFileString);
-            Toast.makeText(getApplicationContext(), (classNameTxt + ".cpp" + R.string.and + classNameTxt + ".h" + R.string.successfully_generated), Toast.LENGTH_SHORT).show();
+            Snackbar.make(view, (classNameTxt + R.string.class_successfully_generated), Snackbar.LENGTH_LONG).show();
         } else {
-            Toast.makeText(getApplicationContext(), R.string.error_empty_mod_name, Toast.LENGTH_SHORT).show();
+            Snackbar.make(view, R.string.error_empty_mod_name, Snackbar.LENGTH_LONG).show();
         }
     }
 
