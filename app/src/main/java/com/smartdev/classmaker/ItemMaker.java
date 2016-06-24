@@ -110,7 +110,7 @@ public class ItemMaker extends AppCompatActivity {
                 classNameTxt + "::" + classNameTxt + "(short itemId) : Item(\"" + descriptionIdTxt + "\", " + "itemId - 0x100) {\n" +
                 "\tItem::mItems[itemId] = this;\n" +
                 "\tcreativeCategory = CreativeItemCategory::" + categoryTxt + ";\n" +
-                "\tsetIcon(\"" + textureTxt + "\", 0);\n" +
+                "\tsetIcon(" + textureTxt + ");\n" +
                 "\tsetMaxStackSize(" + maxStackSizeInt + ");\n" +
                 stackedByDataTxt +
                 "}").split(System.getProperty("line.separator"));

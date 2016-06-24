@@ -120,7 +120,7 @@ public class ArmorItemMaker extends AppCompatActivity {
             classNameTxt + "::" + classNameTxt + "(short itemId) : Item(\"" + descriptionIdTxt + "\", " + "itemId - 0x100, " + armorMaterialTxt + ", " + armorRenderTypeTxt + ", ArmorSlot::" + armorSlotTxt + ") {\n" +
             "\tItem::mItems[itemId] = this;\n" +
             "\tcreativeCategory = CreativeItemCategory::" + categoryTxt + ";\n" +
-            "\tsetIcon( + textureTxt + );\n" +
+            "\tsetIcon(" + textureTxt + ");\n" +
             maxDamageTxt +
             "}").split(System.getProperty("line.separator"));
 
