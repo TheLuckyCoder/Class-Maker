@@ -2,42 +2,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/padding"
+    android:padding="@dimen/activity_padding"
     tools:context=".MainActivity">
 
     <Button
-        android:layout_marginTop="@dimen/margin"
         android:onClick="makeItemClass"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnItem"
+        android:id="@+id/itemClassBtn"
         android:text="@string/class_item_maker"
         android:textSize="20sp"
-        android:gravity="center"
+        android:layout_marginTop="@dimen/activity_margin"
+        android:layout_marginBottom="@dimen/activity_margin"
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_marginTop="@dimen/margin"
         android:onClick="makeArmorItemClass"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnItem"
-        android:id="@+id/btnArmorItem"
+        android:layout_below="@+id/itemClassBtn"
+        android:id="@+id/armorItemBtn"
         android:text="@string/class_armor_item_maker"
         android:textSize="20sp"
-        android:gravity="center"
+        android:layout_marginTop="@dimen/activity_margin"
+        android:layout_marginBottom="@dimen/activity_margin"
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_marginTop="@dimen/margin"
         android:onClick="makeBlockClass"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnArmorItem"
-        android:id="@+id/btnBlock"
+        android:layout_below="@+id/armorItemBtn"
+        android:id="@+id/blockClassBtn"
         android:text="@string/class_block_maker"
         android:textSize="20sp"
-        android:gravity="center"
+        android:layout_marginTop="@dimen/activity_margin"
+        android:layout_marginBottom="@dimen/activity_margin"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

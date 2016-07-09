@@ -6,16 +6,17 @@ android {
 
     defaultConfig {
         applicationId "com.smartdev.classmaker"
-        minSdkVersion 10
+        minSdkVersion 11
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
 
+        vectorDrawables.setUseSupportLibrary(true)
         resConfigs "en"
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

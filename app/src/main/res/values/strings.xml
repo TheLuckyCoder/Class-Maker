@@ -10,7 +10,7 @@
 
     <string name="description_id">Description Id</string>
     <string name="category">Inventory Category(1 – 4)</string>
-    <string name="item_texture">Texture(\"item_name\", 0)</string>
+    <string name="item_texture">Texture(\"texture_name\", 0)</string>
     <string name="item_max_stack_size">Max Stack Size(1 – 64)</string>
     <string name="item_armor_material">Armor Material</string>
     <string name="item_armor_render_index">Render Index</string>
@@ -24,4 +24,6 @@
 
     <string name="error_external_storage_permission">External storage permission required to save classes!</string>
     <string name="error_empty_mod_name">Error: Mod Name is empty</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

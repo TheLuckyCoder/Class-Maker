@@ -1,6 +1,8 @@
 package com.smartdev.classmaker;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -12,7 +14,7 @@ import java.io.File;
 public class BlockMaker extends AppCompatActivity {
 
     EditText etClassName, etDescriptionId, etCategory, etMaterial, etDestroyTime;
-    String blockHeaderPath = "com/mojang/minecraftpe/world/level/block/Block.h";
+    String blockHeaderPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,9 @@ public class BlockMaker extends AppCompatActivity {
 
         File dir = new File(Utils.path);
         dir.mkdir();
+
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        blockHeaderPath = sharedPref.getString("blockHeaderPath", "com/mojang/minecraftpe/world/level/block/Block.h");
 
         //Defines
         etClassName = (EditText) findViewById(R.id.blockClassNameTxt);

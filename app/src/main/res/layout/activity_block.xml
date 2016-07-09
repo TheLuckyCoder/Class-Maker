@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/padding"
+    android:padding="@dimen/activity_padding"
     tools:context=".BlockMaker">
 
     <RelativeLayout
@@ -84,7 +84,7 @@
             android:onClick="createMod"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnCreateMod"
+            android:id="@+id/createModBtn"
             android:gravity="center"
             android:text="@string/class_create"
             android:layout_below="@+id/blockDestroyTimeLayout"

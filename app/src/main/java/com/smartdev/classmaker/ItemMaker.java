@@ -1,6 +1,8 @@
 package com.smartdev.classmaker;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -25,6 +27,9 @@ public class ItemMaker extends AppCompatActivity {
 
         File dir = new File(Utils.path);
         dir.mkdir();
+
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        itemHeaderPath = sharedPref.getString("itemHeaderPath", "com/mojang/minecraftpe/world/item/Item.h");
 
         //Defines
         etClassName = (EditText) findViewById(R.id.itemClassNameTxt);
