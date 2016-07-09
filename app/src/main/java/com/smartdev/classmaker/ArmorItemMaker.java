@@ -8,126 +8,122 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-import com.smartdev.classmaker.utils.Utils;
-
 import java.io.File;
 
 public class ArmorItemMaker extends AppCompatActivity {
 
-    boolean customMaxDamage = false;
+    boolean bCustomMaxDamage = false;
+    EditText etClassName, etDescriptionId, etArmorMaterial, etArmorRenderType, etArmorSlot, etCategory, etTexture, etMaxDamage;
+    String armorItemHeaderPath = "com/mojang/minecraftpe/world/item/ArmorItem.h";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_armoritem);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         File dir = new File(Utils.path);
-        dir.mkdirs();
+        dir.mkdir();
+
+        //Defines
+        etClassName = (EditText) findViewById(R.id.armorItemClassNameTxt);
+        etDescriptionId = (EditText) findViewById(R.id.armorItemDescriptionIdTxt);
+        etArmorMaterial = (EditText) findViewById(R.id.armorMaterialTxt);
+        etArmorRenderType = (EditText) findViewById(R.id.armorRenderTypeTxt);
+        etArmorSlot = (EditText) findViewById(R.id.armorSlotTxt);
+        etCategory = (EditText) findViewById(R.id.armorItemCategoryTxt);
+        etTexture = (EditText) findViewById(R.id.armorItemTextureTxt);
+        etMaxDamage = (EditText) findViewById(R.id.armorItemMaxDamageTxt);
     }
 
     public void onCheckboxClicked(View view) {
         boolean checked = ((CheckBox) view).isChecked();
 
-        EditText maxDamage = (EditText) findViewById(R.id.armorItemMaxDamageTxt);
-        assert maxDamage != null;
-
         // Check which checkbox was clicked
         switch(view.getId()) {
             case R.id.customMaxDamageCheck:
                 if (checked) {
-                    maxDamage.setVisibility(View.VISIBLE);
-                    customMaxDamage = true;
+                    etMaxDamage.setVisibility(View.VISIBLE);
+                    bCustomMaxDamage = true;
                 } else {
-                    maxDamage.setVisibility(View.GONE);
-                    customMaxDamage = false;
+                    etMaxDamage.setVisibility(View.GONE);
+                    bCustomMaxDamage = false;
                 }
                 break;
         }
     }
 
     public void createMod(View view) {
-        //Defines
-        EditText className = (EditText) findViewById(R.id.armorItemClassNameTxt);
-        EditText descriptionId = (EditText) findViewById(R.id.armorItemDescriptionIdTxt);
-        EditText armorMaterial = (EditText) findViewById(R.id.armorMaterialTxt);
-        EditText armorRenderType = (EditText) findViewById(R.id.armorRenderTypeTxt);
-        EditText armorSlot = (EditText) findViewById(R.id.armorSlotTxt);
-        EditText category = (EditText) findViewById(R.id.armorItemCategoryTxt);
-        EditText texture = (EditText) findViewById(R.id.armorItemTextureTxt);
-        EditText maxDamage = (EditText) findViewById(R.id.armorItemMaxDamageTxt);
-
-
-        //Asserts
-        assert className != null;
-        assert descriptionId != null;
-        assert armorMaterial != null;
-        assert armorRenderType != null;
-        assert armorSlot != null;
-        assert category != null;
-        assert texture != null;
-        assert maxDamage != null;
-
-
         //Strings and Integers
-        String classNameTxt = className.getText().toString();
-        String descriptionIdTxt = descriptionId.getText().toString();
-        String armorMaterialTxt = armorMaterial.getText().toString();
-        String armorRenderTypeTxt = armorRenderType.getText().toString();
-        String armorSlotTxt = armorSlot.getText().toString();
-        String categoryTxt = category.getText().toString();
-        String textureTxt = texture.getText().toString();
+        String classNameTxt = etClassName.getText().toString();
+        String descriptionIdTxt = etDescriptionId.getText().toString();
+        String armorMaterialTxt = etArmorMaterial.getText().toString();
+        String armorRenderTypeTxt = etArmorRenderType.getText().toString();
+        String armorSlotTxt = etArmorSlot.getText().toString();
+        String categoryTxt = etCategory.getText().toString();
+        String textureTxt = etTexture.getText().toString();
         String maxDamageTxt = "";
         int maxDamageInt;
 
-        if (armorSlotTxt.matches("1"))
-            armorSlotTxt = "HELMET";
-        else if (armorSlotTxt.matches("2"))
-            armorSlotTxt = "CHESTPLATE";
-        else if (armorSlotTxt.matches("3"))
-            armorSlotTxt = "LEGGINGS";
-        else if (armorSlotTxt.matches("4"))
-            armorSlotTxt = "BOOTS";
+        switch (armorSlotTxt) {
+            case "1":
+                armorSlotTxt = "HELMET";
+                break;
+            case "2":
+                armorSlotTxt = "CHESTPLATE";
+                break;
+            case "3":
+                armorSlotTxt = "LEGGINGS";
+                break;
+            case "4":
+                armorSlotTxt = "BOOTS";
+                break;
+        }
 
-        if (categoryTxt.matches("1"))
-            categoryTxt = "BLOCKS";
-        else if (categoryTxt.matches("2"))
-            categoryTxt = "DECORATIONS";
-        else if (categoryTxt.matches("3"))
-            categoryTxt = "TOOLS";
-        else if (categoryTxt.matches("4"))
-            categoryTxt = "ITEMS";
+        switch (categoryTxt) {
+            case "1":
+                categoryTxt = "BLOCKS";
+                break;
+            case "2":
+                categoryTxt = "DECORATIONS";
+                break;
+            case "3":
+                categoryTxt = "TOOLS";
+                break;
+            case "4":
+                categoryTxt = "ITEMS";
+                break;
+        }
 
-        if (customMaxDamage) {
-            maxDamageInt = Integer.parseInt(maxDamage.getText().toString());
+        if (bCustomMaxDamage) {
+            maxDamageInt = Integer.parseInt(etMaxDamage.getText().toString());
             maxDamageTxt = "\tsetMaxDamage(" + maxDamageInt + ");\n";
         }
 
 
         //Code
-        File headerFile = new File(Utils.path + (classNameTxt + ".h"));
-        File sourceFile = new File(Utils.path + (classNameTxt + ".cpp"));
+        File headerFile = new File(Utils.path + classNameTxt + ".h");
+        File sourceFile = new File(Utils.path + classNameTxt + ".cpp");
 
         String [] headerFileString = String.valueOf("#pragma once\n\n" +
-                "#include \"com/mojang/minecraftpe/world/item/ArmorItem.h\"\n\n" +
+                "#include \"" + armorItemHeaderPath + "\"\n\n" +
                 "class " + classNameTxt + " : public ArmorItem {\n" +
                 "public:\n" +
                 "\t" + classNameTxt + "(short itemId);\n" +
-                "};").split(System.getProperty("line.separator"));
+                "};\n").split(System.getProperty("line.separator"));
 
         String [] sourceFileString = String.valueOf("#include \"" + classNameTxt + ".h\"\n\n" +
-            classNameTxt + "::" + classNameTxt + "(short itemId) : Item(\"" + descriptionIdTxt + "\", " + "itemId - 0x100, " + armorMaterialTxt + ", " + armorRenderTypeTxt + ", ArmorSlot::" + armorSlotTxt + ") {\n" +
+            classNameTxt + "::" + classNameTxt + "(short itemId) : Item(\"" + descriptionIdTxt + "\", " + "itemId - 256, " + armorMaterialTxt + ", " + armorRenderTypeTxt + ", ArmorSlot::" + armorSlotTxt + ") {\n" +
             "\tItem::mItems[itemId] = this;\n" +
-            "\tcreativeCategory = CreativeItemCategory::" + categoryTxt + ";\n" +
             "\tsetIcon(" + textureTxt + ");\n" +
+            "\tsetCategory(CreativeItemCategory::" + categoryTxt + ");\n" +
             maxDamageTxt +
-            "}").split(System.getProperty("line.separator"));
+            "}\n").split(System.getProperty("line.separator"));
 
         if (!classNameTxt.matches("")) {
             Utils.Save(headerFile, headerFileString);
             Utils.Save(sourceFile, sourceFileString);
-            Snackbar.make(view, (classNameTxt + R.string.class_successfully_generated), Snackbar.LENGTH_LONG).show();
+            Snackbar.make(view, R.string.class_successfully_generated, Snackbar.LENGTH_LONG).show();
         } else {
             Snackbar.make(view, R.string.error_empty_mod_name, Snackbar.LENGTH_LONG).show();
         }

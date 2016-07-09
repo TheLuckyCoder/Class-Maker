@@ -1,4 +1,4 @@
-package com.smartdev.classmaker.utils;
+package com.smartdev.classmaker;
 
 import android.os.Environment;
 

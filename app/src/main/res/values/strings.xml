@@ -1,13 +1,9 @@
 <resources>
     <string name="app_name">Class Maker</string>
 
-    <string name="item_activity">Item - Class Maker</string>
-    <string name="armor_item_activity">Armor Item - Class Maker</string>
-    <string name="block_activity">Block - Class Maker</string>
-
     <string name="class_name">Class Name</string>
     <string name="class_create">Create Class</string>
-    <string name="class_successfully_generated">class was successfully generated</string>
+    <string name="class_successfully_generated">Class successfully generated</string>
     <string name="class_item_maker">Item Class</string>
     <string name="class_armor_item_maker">Armor Item Class</string>
     <string name="class_block_maker">Block Class</string>

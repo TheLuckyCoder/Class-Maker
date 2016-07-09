@@ -22,13 +22,13 @@
         </activity>
         <activity
             android:name=".ItemMaker"
-            android:label="@string/item_activity" />
+            android:label="@string/class_item_maker" />
         <activity
             android:name=".ArmorItemMaker"
-            android:label="@string/armor_item_activity" />
+            android:label="@string/class_armor_item_maker" />
         <activity
             android:name=".BlockMaker"
-            android:label="@string/block_activity" />
+            android:label="@string/class_block_maker" />
     </application>
 
 </manifest>
