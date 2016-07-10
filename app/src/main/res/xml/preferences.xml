@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="Header Paths">
-        <Preference
+        <EditTextPreference
             android:key="item_header_path"
             android:title="Item Header Path"
+            android:inputType="textNoSuggestions"
+            android:maxLines="1"
+            android:singleLine="true"
             android:defaultValue="com/mojang/minecraftpe/world/item/Item.h"/>
-        <Preference
+        <EditTextPreference
             android:key="armor_item_header_path"
             android:title="Armor Item Header Path"
+            android:inputType="textNoSuggestions"
+            android:maxLines="1"
+            android:singleLine="true"
             android:defaultValue="com/mojang/minecraftpe/world/item/ArmorItem.h"/>
-        <Preference
+        <EditTextPreference
             android:key="block_header_path"
             android:title="Block Header Path"
+            android:inputType="textNoSuggestions"
+            android:maxLines="1"
+            android:singleLine="true"
             android:defaultValue="com/mojang/minecraftpe/world/level/block/Block.h"/>
     </PreferenceCategory>
 </PreferenceScreen>

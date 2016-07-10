@@ -29,6 +29,9 @@
         <activity
             android:name=".BlockMaker"
             android:label="@string/class_block_maker" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/action_settings"/>
     </application>
 
 </manifest>

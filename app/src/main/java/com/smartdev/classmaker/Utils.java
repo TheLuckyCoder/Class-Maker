@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class Utils {
 
-    public static String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClassMaker/";
+    public static String folderPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClassMaker/";
 
     public static void Save(File file, String[] data) {
         FileOutputStream fos = null;

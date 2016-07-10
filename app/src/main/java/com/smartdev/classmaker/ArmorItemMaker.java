@@ -1,6 +1,8 @@
 package com.smartdev.classmaker;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -12,18 +14,19 @@ import java.io.File;
 
 public class ArmorItemMaker extends AppCompatActivity {
 
-    boolean bCustomMaxDamage = false;
-    EditText etClassName, etDescriptionId, etArmorMaterial, etArmorRenderType, etArmorSlot, etCategory, etTexture, etMaxDamage;
-    String armorItemHeaderPath = "com/mojang/minecraftpe/world/item/ArmorItem.h";
+    private boolean bCustomMaxDamage = false;
+    private EditText etClassName, etDescriptionId, etArmorMaterial, etArmorRenderType, etArmorSlot, etCategory, etTexture, etMaxDamage;
+    String armorItemHeaderPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_armoritem);
+        //noinspection ConstantConditions
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        File dir = new File(Utils.path);
-        dir.mkdir();
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        armorItemHeaderPath = sharedPref.getString("armor_item_header_path", "com/mojang/minecraftpe/world/item/ArmorItem.h");
 
         //Defines
         etClassName = (EditText) findViewById(R.id.armorItemClassNameTxt);
@@ -102,8 +105,8 @@ public class ArmorItemMaker extends AppCompatActivity {
 
 
         //Code
-        File headerFile = new File(Utils.path + classNameTxt + ".h");
-        File sourceFile = new File(Utils.path + classNameTxt + ".cpp");
+        File headerFile = new File(Utils.folderPath + classNameTxt + ".h");
+        File sourceFile = new File(Utils.folderPath + classNameTxt + ".cpp");
 
         String [] headerFileString = String.valueOf("#pragma once\n\n" +
                 "#include \"" + armorItemHeaderPath + "\"\n\n" +

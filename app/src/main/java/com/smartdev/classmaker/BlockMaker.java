@@ -13,21 +13,18 @@ import java.io.File;
 
 public class BlockMaker extends AppCompatActivity {
 
-    EditText etClassName, etDescriptionId, etCategory, etMaterial, etDestroyTime;
+    private EditText etClassName, etDescriptionId, etCategory, etMaterial, etDestroyTime;
     String blockHeaderPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_block);
-
+        //noinspection ConstantConditions
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        File dir = new File(Utils.path);
-        dir.mkdir();
-
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        blockHeaderPath = sharedPref.getString("blockHeaderPath", "com/mojang/minecraftpe/world/level/block/Block.h");
+        blockHeaderPath = sharedPref.getString("block_header_path", "com/mojang/minecraftpe/world/level/block/Block.h");
 
         //Defines
         etClassName = (EditText) findViewById(R.id.blockClassNameTxt);
@@ -62,8 +59,8 @@ public class BlockMaker extends AppCompatActivity {
 
 
         //Code
-        File headerFile = new File (Utils.path + classNameTxt + ".h");
-        File sourceFile = new File (Utils.path + classNameTxt + ".cpp");
+        File headerFile = new File (Utils.folderPath + classNameTxt + ".h");
+        File sourceFile = new File (Utils.folderPath + classNameTxt + ".cpp");
 
         String [] headerFileString = String.valueOf("#pragma once\n\n" +
                 "#include \"" + blockHeaderPath + "\"\n\n" +

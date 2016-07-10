@@ -14,22 +14,20 @@ import java.io.File;
 
 public class ItemMaker extends AppCompatActivity {
 
-    boolean bCustomMaxStackSize = false,
+    private boolean bCustomMaxStackSize = false,
             bStackedByData = false;
-    EditText etClassName, etDescriptionId, etCategory, etTexture, etMaxStackSize;
-    String itemHeaderPath = "com/mojang/minecraftpe/world/item/Item.h";
+    private EditText etClassName, etDescriptionId, etCategory, etTexture, etMaxStackSize;
+    String itemHeaderPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
+        //noinspection ConstantConditions
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        File dir = new File(Utils.path);
-        dir.mkdir();
-
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        itemHeaderPath = sharedPref.getString("itemHeaderPath", "com/mojang/minecraftpe/world/item/Item.h");
+        itemHeaderPath = sharedPref.getString("item_header_path", "com/mojang/minecraftpe/world/item/Item.h");
 
         //Defines
         etClassName = (EditText) findViewById(R.id.itemClassNameTxt);
@@ -103,8 +101,8 @@ public class ItemMaker extends AppCompatActivity {
 
 
         //Code
-        File headerFile = new File(Utils.path + classNameTxt + ".h");
-        File sourceFile = new File(Utils.path + classNameTxt + ".cpp");
+        File headerFile = new File(Utils.folderPath + classNameTxt + ".h");
+        File sourceFile = new File(Utils.folderPath + classNameTxt + ".cpp");
 
         String[] headerFileString = String.valueOf("#pragma once\n\n" +
                 "#include \"" + itemHeaderPath + "\"\n\n" +
