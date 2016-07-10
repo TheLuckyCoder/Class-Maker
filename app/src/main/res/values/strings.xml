@@ -16,11 +16,13 @@
     <string name="item_armor_render_index">Render Index</string>
     <string name="item_armor_slot">Armor Slot(1 – 4)</string>
     <string name="item_max_damage">Max Damage</string>
+    <string name="item_attack_damage">Attack Damage(1.0)</string>
     <string name="block_material">Material Type</string>
     <string name="block_destroy_time">Destroy Time(1.0)</string>
     <string name="stacked_by_data">Stacked By Data</string>
     <string name="custom_max_stack_size">Custom Max Stack Size</string>
     <string name="custom_max_damage">Custom Max Damage</string>
+    <string name="custom_attack_damage">Custom Attack Damage</string>
 
     <string name="error_external_storage_permission">External storage permission required to save classes!</string>
     <string name="error_empty_mod_name">Error: Mod Name is empty</string>

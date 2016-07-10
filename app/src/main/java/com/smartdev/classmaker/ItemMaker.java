@@ -15,8 +15,9 @@ import java.io.File;
 public class ItemMaker extends AppCompatActivity {
 
     private boolean bCustomMaxStackSize = false,
+            bCustomAttackDamage = false,
             bStackedByData = false;
-    private EditText etClassName, etDescriptionId, etCategory, etTexture, etMaxStackSize;
+    private EditText etClassName, etDescriptionId, etCategory, etTexture, etMaxStackSize, etAttackDamage;
     String itemHeaderPath;
 
     @Override
@@ -35,36 +36,49 @@ public class ItemMaker extends AppCompatActivity {
         etCategory = (EditText) findViewById(R.id.itemCategoryTxt);
         etTexture = (EditText) findViewById(R.id.itemTextureTxt);
         etMaxStackSize = (EditText) findViewById(R.id.itemMaxStackSizeTxt);
+        etAttackDamage = (EditText) findViewById(R.id.itemAttackDamageTxt);
     }
 
     public void onCheckboxClicked(View view) {
         boolean checked = ((CheckBox) view).isChecked();
 
-        EditText maxStackSize = (EditText) findViewById(R.id.itemMaxStackSizeTxt);
-        assert maxStackSize != null;
-
         // Check which checkbox was clicked
         switch (view.getId()) {
             case R.id.customStackSizeCheck:
                 if (checked) {
-                    maxStackSize.setVisibility(View.VISIBLE);
+                    etMaxStackSize.setVisibility(View.VISIBLE);
                     bCustomMaxStackSize = true;
                 } else {
-                    maxStackSize.setVisibility(View.GONE);
+                    etMaxStackSize.setVisibility(View.GONE);
                     bCustomMaxStackSize = false;
+                }
+                break;
+            case R.id.stackedByDataCheck:
+                bStackedByData = checked;
+                break;
+            case R.id.customAttackDamageCheck:
+                if (checked) {
+                    etAttackDamage.setVisibility(View.VISIBLE);
+                    bCustomAttackDamage = true;
+                } else {
+                    etAttackDamage.setVisibility(View.GONE);
+                    bCustomAttackDamage = false;
                 }
                 break;
         }
     }
 
-    public void createMod(View view) {
+    public void createClass(View view) {
         //Strings and Integers
         String classNameTxt = etClassName.getText().toString();
         String descriptionIdTxt = etDescriptionId.getText().toString();
         String categoryTxt = etCategory.getText().toString();
         String textureTxt = etTexture.getText().toString();
         String maxStackSizeTxt = etMaxStackSize.getText().toString();
-        int maxStackSizeInt = 64;
+        String attackDamageTxt = etAttackDamage.getText().toString();
+        String headerAttackDamageTxt = "";
+        int maxStackSizeInt = 0;
+        float attackDamageFloat = 0f;
         String stackedByDataTxt = "";
 
         switch (categoryTxt) {
@@ -96,6 +110,18 @@ public class ItemMaker extends AppCompatActivity {
             maxStackSizeTxt = "";
         }
 
+        if (bCustomAttackDamage) {
+            if (!attackDamageTxt.matches(""))
+                attackDamageFloat = Float.parseFloat(attackDamageTxt);
+
+            attackDamageTxt = "\n" + classNameTxt + "::getAttackDamage() {\n" +
+                    "\treturn " + attackDamageFloat + ";\n" +
+                    "}\n";
+            headerAttackDamageTxt = "\n\tvirtual float getAttackDamage();\n";
+        } else {
+            attackDamageTxt = "";
+        }
+
         if (bStackedByData)
             stackedByDataTxt = "\tsetStackedByData(true);\n";
 
@@ -104,25 +130,27 @@ public class ItemMaker extends AppCompatActivity {
         File headerFile = new File(Utils.folderPath + classNameTxt + ".h");
         File sourceFile = new File(Utils.folderPath + classNameTxt + ".cpp");
 
-        String[] headerFileString = String.valueOf("#pragma once\n\n" +
+        String[] headerFileContent = String.valueOf("#pragma once\n\n" +
                 "#include \"" + itemHeaderPath + "\"\n\n" +
                 "class " + classNameTxt + " : public Item {\n" +
                 "public:\n" +
                 "\t" + classNameTxt + "(short itemId);\n" +
+                headerAttackDamageTxt +
                 "};\n").split(System.getProperty("line.separator"));
 
-        String[] sourceFileString = String.valueOf("#include \"" + classNameTxt + ".h\"\n\n" +
+        String[] sourceFileContent = String.valueOf("#include \"" + classNameTxt + ".h\"\n\n" +
                 classNameTxt + "::" + classNameTxt + "(short itemId) : Item(\"" + descriptionIdTxt + "\", " + "itemId - 256) {\n" +
                 "\tItem::mItems[itemId] = this;\n" +
                 "\tsetIcon(" + textureTxt + ");\n" +
                 "\tsetCategory(CreativeItemCategory::" + categoryTxt + ");\n" +
                 maxStackSizeTxt +
                 stackedByDataTxt +
-                "}\n").split(System.getProperty("line.separator"));
+                "}\n" +
+                attackDamageTxt).split(System.getProperty("line.separator"));
 
         if (!classNameTxt.matches("")) {
-            Utils.Save(headerFile, headerFileString);
-            Utils.Save(sourceFile, sourceFileString);
+            Utils.Save(headerFile, headerFileContent);
+            Utils.Save(sourceFile, sourceFileContent);
             Snackbar.make(view, R.string.class_successfully_generated, Snackbar.LENGTH_LONG).show();
         } else {
             Snackbar.make(view, R.string.error_empty_mod_name, Snackbar.LENGTH_LONG).show();

@@ -34,7 +34,7 @@ public class BlockMaker extends AppCompatActivity {
         etDestroyTime = (EditText) findViewById(R.id.blockDestroyTimeTxt);
     }
 
-    public void createMod (View view) {
+    public void createClass(View view) {
         //Strings and Integers
         String classNameTxt = etClassName.getText().toString();
         String descriptionIdTxt = etDescriptionId.getText().toString();

@@ -1,43 +1,56 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/activity_padding"
     tools:context=".MainActivity">
 
-    <Button
-        android:onClick="makeItemClass"
-        android:layout_width="fill_parent"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/itemClassBtn"
-        android:text="@string/class_item_maker"
-        android:textSize="20sp"
-        android:layout_marginTop="@dimen/activity_margin"
-        android:layout_marginBottom="@dimen/activity_margin"
-        android:layout_centerHorizontal="true" />
+        android:padding="@dimen/activity_padding">
 
-    <Button
-        android:onClick="makeArmorItemClass"
-        android:layout_width="fill_parent"
+        <Button
+            android:onClick="makeItemClass"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/itemClassBtn"
+            android:text="@string/class_item_maker"
+            android:textSize="20sp"
+            android:layout_marginTop="@dimen/activity_margin"
+            android:layout_marginBottom="@dimen/activity_margin"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:onClick="makeArmorItemClass"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/itemClassBtn"
+            android:id="@+id/armorItemBtn"
+            android:text="@string/class_armor_item_maker"
+            android:textSize="20sp"
+            android:layout_marginTop="@dimen/activity_margin"
+            android:layout_marginBottom="@dimen/activity_margin"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:onClick="makeBlockClass"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/armorItemBtn"
+            android:id="@+id/blockClassBtn"
+            android:text="@string/class_block_maker"
+            android:textSize="20sp"
+            android:layout_marginTop="@dimen/activity_margin"
+            android:layout_marginBottom="@dimen/activity_margin"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/itemClassBtn"
-        android:id="@+id/armorItemBtn"
-        android:text="@string/class_armor_item_maker"
-        android:textSize="20sp"
-        android:layout_marginTop="@dimen/activity_margin"
-        android:layout_marginBottom="@dimen/activity_margin"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:onClick="makeBlockClass"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/armorItemBtn"
-        android:id="@+id/blockClassBtn"
-        android:text="@string/class_block_maker"
-        android:textSize="20sp"
-        android:layout_marginTop="@dimen/activity_margin"
-        android:layout_marginBottom="@dimen/activity_margin"
-        android:layout_centerHorizontal="true" />
-
-</RelativeLayout>
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_settings"
+        android:onClick="startSettings" />
+</android.support.design.widget.CoordinatorLayout>

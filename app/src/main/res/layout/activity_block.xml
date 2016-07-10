@@ -1,94 +1,91 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/activity_padding"
-    tools:context=".BlockMaker">
+    tools:context=".ItemMaker">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <android.support.design.widget.TextInputLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/classNameLayout">
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/blockClassNameTxt"
-                android:hint="@string/class_name"
-                android:textSize="20sp"
-                android:layout_centerHorizontal="true"
-                android:inputType="textNoSuggestions" />
-        </android.support.design.widget.TextInputLayout>
+            android:padding="@dimen/activity_padding">
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/blockDescriptionIdLayout"
-            android:layout_below="@+id/classNameLayout">
-            <EditText
-                android:layout_width="fill_parent"
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/blockDescriptionIdTxt"
-                android:layout_centerHorizontal="true"
-                android:hint="@string/description_id"
-                android:inputType="textNoSuggestions" />
-        </android.support.design.widget.TextInputLayout>
+                android:id="@+id/classNameLayout">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/blockClassNameTxt"
+                    android:hint="@string/class_name"
+                    android:textSize="20sp"
+                    android:inputType="textNoSuggestions" />
+            </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/blockCategoryLayout"
-            android:layout_below="@+id/blockDescriptionIdLayout">
-            <EditText
-                android:layout_width="fill_parent"
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/blockCategoryTxt"
-                android:layout_centerHorizontal="true"
-                android:hint="@string/category"
-                android:layout_below="@+id/txtBlockDescriptionId"
-                android:inputType="number" />
-        </android.support.design.widget.TextInputLayout>
+                android:id="@+id/blockDescriptionIdLayout"
+                android:layout_below="@+id/classNameLayout">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/blockDescriptionIdTxt"
+                    android:hint="@string/description_id"
+                    android:inputType="textNoSuggestions" />
+            </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/blockMaterialLayout"
-            android:layout_below="@+id/blockCategoryLayout">
-            <EditText
-                android:layout_width="fill_parent"
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/blockMaterialTxt"
-                android:layout_centerHorizontal="true"
-                android:hint="@string/block_material"
-                android:inputType="textNoSuggestions" />
-        </android.support.design.widget.TextInputLayout>
+                android:id="@+id/blockCategoryLayout"
+                android:layout_below="@+id/blockDescriptionIdLayout">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/blockCategoryTxt"
+                    android:hint="@string/category"
+                    android:inputType="number" />
+            </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/blockDestroyTimeLayout"
-            android:layout_below="@+id/blockMaterialLayout">
-            <EditText
-                android:layout_width="fill_parent"
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/blockDestroyTimeTxt"
-                android:layout_centerHorizontal="true"
-                android:hint="@string/block_destroy_time"
-                android:inputType="numberDecimal" />
-        </android.support.design.widget.TextInputLayout>
+                android:id="@+id/blockMaterialLayout"
+                android:layout_below="@+id/blockCategoryLayout">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/blockMaterialTxt"
+                    android:hint="@string/block_material"
+                    android:inputType="textNoSuggestions" />
+            </android.support.design.widget.TextInputLayout>
 
-        <Button
-            android:onClick="createMod"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/createModBtn"
-            android:gravity="center"
-            android:text="@string/class_create"
-            android:layout_below="@+id/blockDestroyTimeLayout"
-            android:textSize="20sp"
-            android:layout_marginTop="30dp" />
-    </RelativeLayout>
-</ScrollView>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/blockDestroyTimeLayout"
+                android:layout_below="@+id/blockMaterialLayout">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/blockDestroyTimeTxt"
+                    android:hint="@string/block_destroy_time"
+                    android:inputType="numberDecimal" />
+            </android.support.design.widget.TextInputLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_build"
+        android:onClick="createClass" />
+</android.support.design.widget.CoordinatorLayout>

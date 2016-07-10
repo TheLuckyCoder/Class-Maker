@@ -1,4 +1,5 @@
 <resources>
-    <dimen name="activity_margin">60dp</dimen>
-    <dimen name="activity_padding">40dp</dimen>
+    <dimen name="activity_padding">48dp</dimen>
+    <dimen name="activity_margin">64dp</dimen>
+    <dimen name="fab_margin">40dp</dimen>
 </resources>
