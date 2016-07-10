@@ -11,6 +11,14 @@ public class Utils {
 
     public static String folderPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClassMaker/";
 
+	public void setFolderPath(String path) {
+		this.folderPath = path;
+	}
+	
+	public String getFolderPath() {
+		return folderPath;
+	}
+	
     public static void Save(File file, String[] data) {
         FileOutputStream fos = null;
         try {
