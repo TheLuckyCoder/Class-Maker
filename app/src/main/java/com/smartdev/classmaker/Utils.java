@@ -28,14 +28,11 @@ public class Utils {
         try {
             try {
                 for (int i = 0; i<data.length; i++) {
-                    if (fos != null) {
+                    if (fos != null)
                         fos.write(data[i].getBytes());
-                    }
-                    if (i < data.length-1)
-                    {
-                        if (fos != null) {
+                    if (i < data.length-1) {
+                        if (fos != null)
                             fos.write("\n".getBytes());
-                        }
                     }
                 }
             }
@@ -43,9 +40,8 @@ public class Utils {
         }
         finally {
             try {
-                if (fos != null) {
+                if (fos != null)
                     fos.close();
-                }
             }
             catch (IOException e) {e.printStackTrace();}
         }

@@ -24,7 +24,8 @@
     <string name="custom_max_damage">Custom Max Damage</string>
     <string name="custom_attack_damage">Custom Attack Damage</string>
 
-    <string name="error_external_storage_permission">External storage permission required to save classes!</string>
+    <string name="permission_required">Permission Required</string>
+    <string name="external_storage_permission_required">External storage permission required to save classes!</string>
     <string name="error_empty_mod_name">Error: Mod Name is empty</string>
 
     <string name="action_settings">Settings</string>

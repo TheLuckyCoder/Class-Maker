@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.EditText;
 
 import java.io.File;
 
@@ -17,7 +16,7 @@ public class ItemMaker extends AppCompatActivity {
     private boolean bCustomMaxStackSize = false,
             bCustomAttackDamage = false,
             bStackedByData = false;
-    private EditText etClassName, etDescriptionId, etCategory, etTexture, etMaxStackSize, etAttackDamage;
+    private android.support.design.widget.TextInputEditText etClassName, etDescriptionId, etCategory, etTexture, etMaxStackSize, etAttackDamage;
     String itemHeaderPath;
 
     @Override
@@ -28,15 +27,15 @@ public class ItemMaker extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        itemHeaderPath = sharedPref.getString("item_header_path", "com/mojang/minecraftpe/world/item/Item.h");
+        itemHeaderPath = sharedPref.getString("item_header_path", "minecraftpe/world/item/Item.h");
 
         //Defines
-        etClassName = (EditText) findViewById(R.id.itemClassNameTxt);
-        etDescriptionId = (EditText) findViewById(R.id.itemDescriptionIdTxt);
-        etCategory = (EditText) findViewById(R.id.itemCategoryTxt);
-        etTexture = (EditText) findViewById(R.id.itemTextureTxt);
-        etMaxStackSize = (EditText) findViewById(R.id.itemMaxStackSizeTxt);
-        etAttackDamage = (EditText) findViewById(R.id.itemAttackDamageTxt);
+        etClassName = (android.support.design.widget.TextInputEditText) findViewById(R.id.itemClassNameTxt);
+        etDescriptionId = (android.support.design.widget.TextInputEditText) findViewById(R.id.itemDescriptionIdTxt);
+        etCategory = (android.support.design.widget.TextInputEditText) findViewById(R.id.itemCategoryTxt);
+        etTexture = (android.support.design.widget.TextInputEditText) findViewById(R.id.itemTextureTxt);
+        etMaxStackSize = (android.support.design.widget.TextInputEditText) findViewById(R.id.itemMaxStackSizeTxt);
+        etAttackDamage = (android.support.design.widget.TextInputEditText) findViewById(R.id.itemAttackDamageTxt);
     }
 
     public void onCheckboxClicked(View view) {
@@ -106,9 +105,8 @@ public class ItemMaker extends AppCompatActivity {
                 maxStackSizeInt = 1;
 
             maxStackSizeTxt = "\tsetMaxStackSize(" + maxStackSizeInt + ");\n";
-        } else {
+        } else
             maxStackSizeTxt = "";
-        }
 
         if (bCustomAttackDamage) {
             if (!attackDamageTxt.matches(""))
@@ -118,9 +116,8 @@ public class ItemMaker extends AppCompatActivity {
                     "\treturn " + attackDamageFloat + ";\n" +
                     "}\n";
             headerAttackDamageTxt = "\n\tvirtual float getAttackDamage();\n";
-        } else {
+        } else
             attackDamageTxt = "";
-        }
 
         if (bStackedByData)
             stackedByDataTxt = "\tsetStackedByData(true);\n";
@@ -152,9 +149,8 @@ public class ItemMaker extends AppCompatActivity {
             Utils.Save(headerFile, headerFileContent);
             Utils.Save(sourceFile, sourceFileContent);
             Snackbar.make(view, R.string.class_successfully_generated, Snackbar.LENGTH_LONG).show();
-        } else {
+        } else
             Snackbar.make(view, R.string.error_empty_mod_name, Snackbar.LENGTH_LONG).show();
-        }
     }
 
     @Override

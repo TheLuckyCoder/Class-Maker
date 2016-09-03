@@ -8,14 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.EditText;
 
 import java.io.File;
 
 public class ArmorItemMaker extends AppCompatActivity {
 
     private boolean bCustomMaxDamage = false;
-    private EditText etClassName, etDescriptionId, etArmorMaterial, etArmorRenderType, etArmorSlot, etCategory, etTexture, etMaxDamage;
+    private android.support.design.widget.TextInputEditText etClassName, etDescriptionId, etArmorMaterial, etArmorRenderType, etArmorSlot, etCategory, etTexture, etMaxDamage;
     String armorItemHeaderPath;
 
     @Override
@@ -26,17 +25,17 @@ public class ArmorItemMaker extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        armorItemHeaderPath = sharedPref.getString("armor_item_header_path", "com/mojang/minecraftpe/world/item/ArmorItem.h");
+        armorItemHeaderPath = sharedPref.getString("armor_item_header_path", "minecraftpe/world/item/ArmorItem.h");
 
         //Defines
-        etClassName = (EditText) findViewById(R.id.armorItemClassNameTxt);
-        etDescriptionId = (EditText) findViewById(R.id.armorItemDescriptionIdTxt);
-        etArmorMaterial = (EditText) findViewById(R.id.armorMaterialTxt);
-        etArmorRenderType = (EditText) findViewById(R.id.armorRenderTypeTxt);
-        etArmorSlot = (EditText) findViewById(R.id.armorSlotTxt);
-        etCategory = (EditText) findViewById(R.id.armorItemCategoryTxt);
-        etTexture = (EditText) findViewById(R.id.armorItemTextureTxt);
-        etMaxDamage = (EditText) findViewById(R.id.armorItemMaxDamageTxt);
+        etClassName = (android.support.design.widget.TextInputEditText) findViewById(R.id.armorItemClassNameTxt);
+        etDescriptionId = (android.support.design.widget.TextInputEditText) findViewById(R.id.armorItemDescriptionIdTxt);
+        etArmorMaterial = (android.support.design.widget.TextInputEditText) findViewById(R.id.armorMaterialTxt);
+        etArmorRenderType = (android.support.design.widget.TextInputEditText) findViewById(R.id.armorRenderTypeTxt);
+        etArmorSlot = (android.support.design.widget.TextInputEditText) findViewById(R.id.armorSlotTxt);
+        etCategory = (android.support.design.widget.TextInputEditText) findViewById(R.id.armorItemCategoryTxt);
+        etTexture = (android.support.design.widget.TextInputEditText) findViewById(R.id.armorItemTextureTxt);
+        etMaxDamage = (android.support.design.widget.TextInputEditText) findViewById(R.id.armorItemMaxDamageTxt);
     }
 
     public void onCheckboxClicked(View view) {
@@ -127,9 +126,8 @@ public class ArmorItemMaker extends AppCompatActivity {
             Utils.Save(headerFile, headerFileString);
             Utils.Save(sourceFile, sourceFileString);
             Snackbar.make(view, R.string.class_successfully_generated, Snackbar.LENGTH_LONG).show();
-        } else {
+        } else
             Snackbar.make(view, R.string.error_empty_mod_name, Snackbar.LENGTH_LONG).show();
-        }
     }
 
     @Override

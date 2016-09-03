@@ -7,20 +7,20 @@
             android:inputType="textNoSuggestions"
             android:maxLines="1"
             android:singleLine="true"
-            android:defaultValue="com/mojang/minecraftpe/world/item/Item.h"/>
+            android:defaultValue="minecraftpe/world/item/Item.h"/>
         <EditTextPreference
             android:key="armor_item_header_path"
             android:title="Armor Item Header Path"
             android:inputType="textNoSuggestions"
             android:maxLines="1"
             android:singleLine="true"
-            android:defaultValue="com/mojang/minecraftpe/world/item/ArmorItem.h"/>
+            android:defaultValue="minecraftpe/world/item/ArmorItem.h"/>
         <EditTextPreference
             android:key="block_header_path"
             android:title="Block Header Path"
             android:inputType="textNoSuggestions"
             android:maxLines="1"
             android:singleLine="true"
-            android:defaultValue="com/mojang/minecraftpe/world/level/block/Block.h"/>
+            android:defaultValue="minecraftpe/world/level/block/Block.h"/>
     </PreferenceCategory>
 </PreferenceScreen>

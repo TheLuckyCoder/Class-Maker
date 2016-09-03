@@ -2,48 +2,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/activity_padding">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_margin">
 
         <Button
-            android:onClick="makeItemClass"
-            android:layout_width="fill_parent"
+            android:onClick="startActivity"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/itemClassBtn"
             android:text="@string/class_item_maker"
             android:textSize="20sp"
             android:layout_marginTop="@dimen/activity_margin"
-            android:layout_marginBottom="@dimen/activity_margin"
-            android:layout_centerHorizontal="true" />
+            android:layout_marginBottom="@dimen/activity_margin" />
 
         <Button
-            android:onClick="makeArmorItemClass"
-            android:layout_width="fill_parent"
+            android:onClick="startActivity"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/itemClassBtn"
-            android:id="@+id/armorItemBtn"
+            android:id="@+id/armorItemClassBtn"
             android:text="@string/class_armor_item_maker"
             android:textSize="20sp"
             android:layout_marginTop="@dimen/activity_margin"
-            android:layout_marginBottom="@dimen/activity_margin"
-            android:layout_centerHorizontal="true" />
+            android:layout_marginBottom="@dimen/activity_margin" />
 
         <Button
-            android:onClick="makeBlockClass"
-            android:layout_width="fill_parent"
+            android:onClick="startActivity"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/armorItemBtn"
             android:id="@+id/blockClassBtn"
             android:text="@string/class_block_maker"
             android:textSize="20sp"
             android:layout_marginTop="@dimen/activity_margin"
-            android:layout_marginBottom="@dimen/activity_margin"
-            android:layout_centerHorizontal="true" />
-    </RelativeLayout>
+            android:layout_marginBottom="@dimen/activity_margin" />
+    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -51,6 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_settings"
-        android:onClick="startSettings" />
+        app:srcCompat="@drawable/ic_settings"
+        android:onClick="startActivity" />
+
 </android.support.design.widget.CoordinatorLayout>

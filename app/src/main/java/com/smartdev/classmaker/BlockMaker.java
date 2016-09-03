@@ -7,13 +7,12 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 
 import java.io.File;
 
 public class BlockMaker extends AppCompatActivity {
 
-    private EditText etClassName, etDescriptionId, etCategory, etMaterial, etDestroyTime;
+    private android.support.design.widget.TextInputEditText etClassName, etDescriptionId, etCategory, etMaterial, etDestroyTime;
     String blockHeaderPath;
 
     @Override
@@ -24,14 +23,14 @@ public class BlockMaker extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        blockHeaderPath = sharedPref.getString("block_header_path", "com/mojang/minecraftpe/world/level/block/Block.h");
+        blockHeaderPath = sharedPref.getString("block_header_path", "minecraftpe/world/level/block/Block.h");
 
         //Defines
-        etClassName = (EditText) findViewById(R.id.blockClassNameTxt);
-        etDescriptionId = (EditText) findViewById(R.id.blockDescriptionIdTxt);
-        etCategory = (EditText) findViewById(R.id.blockCategoryTxt);
-        etMaterial = (EditText) findViewById(R.id.blockMaterialTxt);
-        etDestroyTime = (EditText) findViewById(R.id.blockDestroyTimeTxt);
+        etClassName = (android.support.design.widget.TextInputEditText) findViewById(R.id.blockClassNameTxt);
+        etDescriptionId = (android.support.design.widget.TextInputEditText) findViewById(R.id.blockDescriptionIdTxt);
+        etCategory = (android.support.design.widget.TextInputEditText) findViewById(R.id.blockCategoryTxt);
+        etMaterial = (android.support.design.widget.TextInputEditText) findViewById(R.id.blockMaterialTxt);
+        etDestroyTime = (android.support.design.widget.TextInputEditText) findViewById(R.id.blockDestroyTimeTxt);
     }
 
     public void createClass(View view) {
@@ -81,9 +80,8 @@ public class BlockMaker extends AppCompatActivity {
             Utils.Save(headerFile, headerFileString);
             Utils.Save(sourceFile, sourceFileString);
             Snackbar.make(view, R.string.class_successfully_generated, Snackbar.LENGTH_LONG).show();
-        } else {
+        } else
             Snackbar.make(view, R.string.error_empty_mod_name, Snackbar.LENGTH_LONG).show();
-        }
     }
 
     @Override
