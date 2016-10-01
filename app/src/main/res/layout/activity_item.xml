@@ -1,123 +1,91 @@
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ItemMaker">
+    tools:context="net.theluckycoder.classmaker.ItemMaker">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_margin">
 
-        <LinearLayout
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/activity_margin">
+            android:id="@+id/itemClassNameTxt"
+            android:hint="@string/class_name"
+            android:textSize="20sp"
+            android:inputType="textNoSuggestions" />
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/itemClassNameTxt"
-                    android:hint="@string/class_name"
-                    android:textSize="20sp"
-                    android:inputType="textNoSuggestions" />
-            </android.support.design.widget.TextInputLayout>
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/custom_max_stack_size"
+            android:id="@+id/customStackSizeCheck"
+            android:onClick="onCheckboxClicked"
+            android:textSize="17sp" />
 
-            <CheckBox
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/custom_max_stack_size"
-                android:id="@+id/customStackSizeCheck"
-                android:onClick="onCheckboxClicked"
-                android:textSize="18sp" />
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/custom_attack_damage"
+            android:id="@+id/customAttackDamageCheck"
+            android:onClick="onCheckboxClicked"
+            android:textSize="17sp" />
 
-            <CheckBox
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/custom_attack_damage"
-                android:id="@+id/customAttackDamageCheck"
-                android:onClick="onCheckboxClicked"
-                android:textSize="18sp" />
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/stacked_by_data"
+            android:id="@+id/stackedByDataCheck"
+            android:onClick="onCheckboxClicked"
+            android:textSize="17sp" />
 
-            <CheckBox
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/stacked_by_data"
-                android:id="@+id/stackedByDataCheck"
-                android:onClick="onCheckboxClicked"
-                android:textSize="18sp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/itemDescriptionIdTxt"
+            android:hint="@string/description_id"
+            android:inputType="textNoSuggestions" />
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/itemDescriptionIdTxt"
-                    android:hint="@string/description_id"
-                    android:inputType="textNoSuggestions" />
-            </android.support.design.widget.TextInputLayout>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/itemCategoryTxt"
+            android:hint="@string/category"
+            android:inputType="number" />
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/itemCategoryTxt"
-                    android:hint="@string/category"
-                    android:inputType="number" />
-            </android.support.design.widget.TextInputLayout>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/itemTextureTxt"
+            android:hint="@string/item_texture"
+            android:inputType="textNoSuggestions" />
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/itemTextureTxt"
-                    android:hint="@string/item_texture"
-                    android:inputType="textNoSuggestions" />
-            </android.support.design.widget.TextInputLayout>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/itemMaxStackSizeTxt"
+            android:hint="@string/item_max_stack_size"
+            android:inputType="number"
+            android:visibility="gone" />
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/itemMaxStackSizeTxt"
-                    android:hint="@string/item_max_stack_size"
-                    android:inputType="number"
-                    android:visibility="gone" />
-            </android.support.design.widget.TextInputLayout>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/itemAttackDamageTxt"
+            android:hint="@string/item_attack_damage"
+            android:inputType="number"
+            android:visibility="gone" />
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/itemAttackDamageTxt"
-                    android:hint="@string/item_attack_damage"
-                    android:inputType="number"
-                    android:visibility="gone" />
-            </android.support.design.widget.TextInputLayout>
-
-        </LinearLayout>
-    </ScrollView>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_build"
-        android:onClick="createClass" />
-
-</android.support.design.widget.CoordinatorLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/class_create"
+            android:textSize="20sp"
+            android:onClick="createClass"
+            style="@style/Base.Widget.AppCompat.Button.Colored" />
+    </LinearLayout>
+</ScrollView>

@@ -1,127 +1,80 @@
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ItemMaker">
+    tools:context="net.theluckycoder.classmaker.ArmorItemMaker">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_margin">
+        
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/activity_margin">
+            android:id="@+id/armorItemClassNameTxt"
+            android:hint="@string/class_name"
+            android:textSize="20sp"
+            android:inputType="textNoSuggestions" />
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/armorItemClassNameTxt"
-                    android:hint="@string/class_name"
-                    android:textSize="20sp"
-                    android:inputType="textNoSuggestions" />
-            </android.support.design.widget.TextInputLayout>
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/custom_max_damage"
+            android:id="@+id/customMaxDamageCheck"
+            android:onClick="onCheckboxClicked"
+            android:textSize="17sp" />
+        
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/armorItemDescriptionIdTxt"
+            android:hint="@string/description_id"
+            android:inputType="textNoSuggestions" />
+    
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/armorMaterialTxt"
+            android:hint="@string/item_armor_material"
+            android:inputType="textNoSuggestions" />
+    
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/armorRenderTypeTxt"
+            android:hint="@string/item_armor_render_index"
+            android:inputType="number" />
+    
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/armorSlotTxt"
+            android:hint="@string/item_armor_slot"
+            android:inputType="number" />
+    
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/armorItemCategoryTxt"
+            android:hint="@string/category"
+            android:inputType="number" />
+    
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/armorItemTextureTxt"
+            android:hint="@string/item_texture"
+            android:inputType="textNoSuggestions" />
 
-            <CheckBox
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/custom_max_damage"
-                android:id="@+id/customMaxDamageCheck"
-                android:onClick="onCheckboxClicked"
-                android:textSize="18sp" />
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/armorItemDescriptionIdTxt"
-                    android:hint="@string/description_id"
-                    android:inputType="textNoSuggestions" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/armorMaterialTxt"
-                    android:hint="@string/item_armor_material"
-                    android:inputType="textNoSuggestions" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/armorRenderTypeTxt"
-                    android:hint="@string/item_armor_render_index"
-                    android:inputType="number" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/armorSlotTxt"
-                    android:hint="@string/item_armor_slot"
-                    android:inputType="number" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/armorItemCategoryTxt"
-                    android:hint="@string/category"
-                    android:inputType="number" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/armorItemTextureTxt"
-                    android:hint="@string/item_texture"
-                    android:inputType="textNoSuggestions" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/armorItemMaxDamageTxt"
-                    android:hint="@string/item_max_damage"
-                    android:inputType="number"
-                    android:visibility="gone" />
-            </android.support.design.widget.TextInputLayout>
-        </LinearLayout>
-    </ScrollView>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_build"
-        android:onClick="createClass" />
-
-</android.support.design.widget.CoordinatorLayout>
+    
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/armorItemMaxDamageTxt"
+            android:hint="@string/item_max_damage"
+            android:inputType="number"
+            android:visibility="gone" />
+    </LinearLayout>
+</ScrollView>

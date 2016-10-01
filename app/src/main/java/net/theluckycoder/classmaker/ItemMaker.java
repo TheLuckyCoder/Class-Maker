@@ -1,13 +1,12 @@
-package com.smartdev.classmaker;
+package net.theluckycoder.classmaker;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.File;
 
@@ -16,8 +15,7 @@ public class ItemMaker extends AppCompatActivity {
     private boolean bCustomMaxStackSize = false,
             bCustomAttackDamage = false,
             bStackedByData = false;
-    private android.support.design.widget.TextInputEditText etClassName, etDescriptionId, etCategory, etTexture, etMaxStackSize, etAttackDamage;
-    String itemHeaderPath;
+    private EditText etClassName, etDescriptionId, etCategory, etTexture, etMaxStackSize, etAttackDamage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,16 +24,12 @@ public class ItemMaker extends AppCompatActivity {
         //noinspection ConstantConditions
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        itemHeaderPath = sharedPref.getString("item_header_path", "minecraftpe/world/item/Item.h");
-
-        //Defines
-        etClassName = (android.support.design.widget.TextInputEditText) findViewById(R.id.itemClassNameTxt);
-        etDescriptionId = (android.support.design.widget.TextInputEditText) findViewById(R.id.itemDescriptionIdTxt);
-        etCategory = (android.support.design.widget.TextInputEditText) findViewById(R.id.itemCategoryTxt);
-        etTexture = (android.support.design.widget.TextInputEditText) findViewById(R.id.itemTextureTxt);
-        etMaxStackSize = (android.support.design.widget.TextInputEditText) findViewById(R.id.itemMaxStackSizeTxt);
-        etAttackDamage = (android.support.design.widget.TextInputEditText) findViewById(R.id.itemAttackDamageTxt);
+        etClassName = (EditText) findViewById(R.id.itemClassNameTxt);
+        etDescriptionId = (EditText) findViewById(R.id.itemDescriptionIdTxt);
+        etCategory = (EditText) findViewById(R.id.itemCategoryTxt);
+        etTexture = (EditText) findViewById(R.id.itemTextureTxt);
+        etMaxStackSize = (EditText) findViewById(R.id.itemMaxStackSizeTxt);
+        etAttackDamage = (EditText) findViewById(R.id.itemAttackDamageTxt);
     }
 
     public void onCheckboxClicked(View view) {
@@ -68,16 +62,14 @@ public class ItemMaker extends AppCompatActivity {
     }
 
     public void createClass(View view) {
-        //Strings and Integers
         String classNameTxt = etClassName.getText().toString();
         String descriptionIdTxt = etDescriptionId.getText().toString();
         String categoryTxt = etCategory.getText().toString();
         String textureTxt = etTexture.getText().toString();
         String maxStackSizeTxt = etMaxStackSize.getText().toString();
         String attackDamageTxt = etAttackDamage.getText().toString();
-        String headerAttackDamageTxt = "";
         int maxStackSizeInt = 0;
-        float attackDamageFloat = 0f;
+        float attackDamageFloat = 0.0f;
         String stackedByDataTxt = "";
 
         switch (categoryTxt) {
@@ -112,10 +104,7 @@ public class ItemMaker extends AppCompatActivity {
             if (!attackDamageTxt.matches(""))
                 attackDamageFloat = Float.parseFloat(attackDamageTxt);
 
-            attackDamageTxt = "\n" + classNameTxt + "::getAttackDamage() {\n" +
-                    "\treturn " + attackDamageFloat + ";\n" +
-                    "}\n";
-            headerAttackDamageTxt = "\n\tvirtual float getAttackDamage();\n";
+            attackDamageTxt = "\tvirtual float getAttackDamage() { return " + attackDamageFloat + "; };\n";
         } else
             attackDamageTxt = "";
 
@@ -124,15 +113,15 @@ public class ItemMaker extends AppCompatActivity {
 
 
         //Code
-        File headerFile = new File(Utils.folderPath + classNameTxt + ".h");
-        File sourceFile = new File(Utils.folderPath + classNameTxt + ".cpp");
+        File headerFile = new File(Util.folderPath + classNameTxt + ".h");
+        File sourceFile = new File(Util.folderPath + classNameTxt + ".cpp");
 
         String[] headerFileContent = String.valueOf("#pragma once\n\n" +
-                "#include \"" + itemHeaderPath + "\"\n\n" +
+                "#include \"minecraftpe/world/item/Item.h\"\n\n" +
                 "class " + classNameTxt + " : public Item {\n" +
                 "public:\n" +
                 "\t" + classNameTxt + "(short itemId);\n" +
-                headerAttackDamageTxt +
+                attackDamageTxt +
                 "};\n").split(System.getProperty("line.separator"));
 
         String[] sourceFileContent = String.valueOf("#include \"" + classNameTxt + ".h\"\n\n" +
@@ -142,15 +131,14 @@ public class ItemMaker extends AppCompatActivity {
                 "\tsetCategory(CreativeItemCategory::" + categoryTxt + ");\n" +
                 maxStackSizeTxt +
                 stackedByDataTxt +
-                "}\n" +
-                attackDamageTxt).split(System.getProperty("line.separator"));
+                "}\n").split(System.getProperty("line.separator"));
 
         if (!classNameTxt.matches("")) {
-            Utils.Save(headerFile, headerFileContent);
-            Utils.Save(sourceFile, sourceFileContent);
-            Snackbar.make(view, R.string.class_successfully_generated, Snackbar.LENGTH_LONG).show();
+            Util.save(headerFile, headerFileContent);
+            Util.save(sourceFile, sourceFileContent);
+            Toast.makeText(this, R.string.class_successfully_generated, Toast.LENGTH_SHORT).show();
         } else
-            Snackbar.make(view, R.string.error_empty_mod_name, Snackbar.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.error_empty_mod_name, Toast.LENGTH_SHORT).show();
     }
 
     @Override

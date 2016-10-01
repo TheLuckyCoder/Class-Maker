@@ -1,21 +1,19 @@
-package com.smartdev.classmaker;
+package net.theluckycoder.classmaker;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.File;
 
 public class ArmorItemMaker extends AppCompatActivity {
 
     private boolean bCustomMaxDamage = false;
-    private android.support.design.widget.TextInputEditText etClassName, etDescriptionId, etArmorMaterial, etArmorRenderType, etArmorSlot, etCategory, etTexture, etMaxDamage;
-    String armorItemHeaderPath;
+    private EditText etClassName, etDescriptionId, etArmorMaterial, etArmorRenderType, etArmorSlot, etCategory, etTexture, etMaxDamage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,18 +22,14 @@ public class ArmorItemMaker extends AppCompatActivity {
         //noinspection ConstantConditions
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        armorItemHeaderPath = sharedPref.getString("armor_item_header_path", "minecraftpe/world/item/ArmorItem.h");
-
-        //Defines
-        etClassName = (android.support.design.widget.TextInputEditText) findViewById(R.id.armorItemClassNameTxt);
-        etDescriptionId = (android.support.design.widget.TextInputEditText) findViewById(R.id.armorItemDescriptionIdTxt);
-        etArmorMaterial = (android.support.design.widget.TextInputEditText) findViewById(R.id.armorMaterialTxt);
-        etArmorRenderType = (android.support.design.widget.TextInputEditText) findViewById(R.id.armorRenderTypeTxt);
-        etArmorSlot = (android.support.design.widget.TextInputEditText) findViewById(R.id.armorSlotTxt);
-        etCategory = (android.support.design.widget.TextInputEditText) findViewById(R.id.armorItemCategoryTxt);
-        etTexture = (android.support.design.widget.TextInputEditText) findViewById(R.id.armorItemTextureTxt);
-        etMaxDamage = (android.support.design.widget.TextInputEditText) findViewById(R.id.armorItemMaxDamageTxt);
+        etClassName = (EditText) findViewById(R.id.armorItemClassNameTxt);
+        etDescriptionId = (EditText) findViewById(R.id.armorItemDescriptionIdTxt);
+        etArmorMaterial = (EditText) findViewById(R.id.armorMaterialTxt);
+        etArmorRenderType = (EditText) findViewById(R.id.armorRenderTypeTxt);
+        etArmorSlot = (EditText) findViewById(R.id.armorSlotTxt);
+        etCategory = (EditText) findViewById(R.id.armorItemCategoryTxt);
+        etTexture = (EditText) findViewById(R.id.armorItemTextureTxt);
+        etMaxDamage = (EditText) findViewById(R.id.armorItemMaxDamageTxt);
     }
 
     public void onCheckboxClicked(View view) {
@@ -56,7 +50,6 @@ public class ArmorItemMaker extends AppCompatActivity {
     }
 
     public void createClass(View view) {
-        //Strings and Integers
         String classNameTxt = etClassName.getText().toString();
         String descriptionIdTxt = etDescriptionId.getText().toString();
         String armorMaterialTxt = etArmorMaterial.getText().toString();
@@ -104,11 +97,11 @@ public class ArmorItemMaker extends AppCompatActivity {
 
 
         //Code
-        File headerFile = new File(Utils.folderPath + classNameTxt + ".h");
-        File sourceFile = new File(Utils.folderPath + classNameTxt + ".cpp");
+        File headerFile = new File(Util.folderPath + classNameTxt + ".h");
+        File sourceFile = new File(Util.folderPath + classNameTxt + ".cpp");
 
         String [] headerFileString = String.valueOf("#pragma once\n\n" +
-                "#include \"" + armorItemHeaderPath + "\"\n\n" +
+                "#include \"minecraftpe/world/item/ArmorItem.h\"\n\n" +
                 "class " + classNameTxt + " : public ArmorItem {\n" +
                 "public:\n" +
                 "\t" + classNameTxt + "(short itemId);\n" +
@@ -123,11 +116,11 @@ public class ArmorItemMaker extends AppCompatActivity {
             "}\n").split(System.getProperty("line.separator"));
 
         if (!classNameTxt.matches("")) {
-            Utils.Save(headerFile, headerFileString);
-            Utils.Save(sourceFile, sourceFileString);
-            Snackbar.make(view, R.string.class_successfully_generated, Snackbar.LENGTH_LONG).show();
+            Util.save(headerFile, headerFileString);
+            Util.save(sourceFile, sourceFileString);
+            Toast.makeText(this, R.string.class_successfully_generated, Toast.LENGTH_SHORT).show();
         } else
-            Snackbar.make(view, R.string.error_empty_mod_name, Snackbar.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.error_empty_mod_name, Toast.LENGTH_SHORT).show();
     }
 
     @Override

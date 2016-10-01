@@ -1,85 +1,58 @@
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ItemMaker">
+    tools:context="net.theluckycoder.classmaker.BlockMaker">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_margin">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/activity_margin">
-
-            <android.support.design.widget.TextInputLayout
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/classNameLayout">
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/blockClassNameTxt"
-                    android:hint="@string/class_name"
-                    android:textSize="20sp"
-                    android:inputType="textNoSuggestions" />
-            </android.support.design.widget.TextInputLayout>
+                android:id="@+id/blockClassNameTxt"
+                android:hint="@string/class_name"
+                android:textSize="20sp"
+                android:inputType="textNoSuggestions" />
 
-            <android.support.design.widget.TextInputLayout
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/blockDescriptionIdTxt"
-                    android:hint="@string/description_id"
-                    android:inputType="textNoSuggestions" />
-            </android.support.design.widget.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:id="@+id/blockDescriptionIdTxt"
+                android:hint="@string/description_id"
+                android:inputType="textNoSuggestions" />
 
-            <android.support.design.widget.TextInputLayout
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/blockCategoryTxt"
-                    android:hint="@string/category"
-                    android:inputType="number" />
-            </android.support.design.widget.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:id="@+id/blockCategoryTxt"
+                android:hint="@string/category"
+                android:inputType="number" />
 
-            <android.support.design.widget.TextInputLayout
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/blockMaterialTxt"
-                    android:hint="@string/block_material"
-                    android:inputType="textNoSuggestions" />
-            </android.support.design.widget.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:id="@+id/blockMaterialTxt"
+                android:hint="@string/block_material"
+                android:inputType="textNoSuggestions" />
 
-            <android.support.design.widget.TextInputLayout
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/blockDestroyTimeTxt"
-                    android:hint="@string/block_destroy_time"
-                    android:inputType="numberDecimal" />
-            </android.support.design.widget.TextInputLayout>
-        </LinearLayout>
-    </ScrollView>
+                android:layout_height="wrap_content"
+                android:id="@+id/blockDestroyTimeTxt"
+                android:hint="@string/block_destroy_time"
+                android:inputType="numberDecimal" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_build"
-        android:onClick="createClass" />
-</android.support.design.widget.CoordinatorLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/class_create"
+            android:textSize="20sp"
+            android:onClick="createClass"
+            style="@style/Base.Widget.AppCompat.Button.Colored" />
+    </LinearLayout>
+</ScrollView>

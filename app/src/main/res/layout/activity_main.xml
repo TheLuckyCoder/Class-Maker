@@ -1,54 +1,39 @@
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:padding="@dimen/activity_margin"
+    tools:context="net.theluckycoder.classmaker.MainActivity">
 
-    <LinearLayout
+    <Button
+        android:onClick="startActivity"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="@dimen/activity_margin">
-
-        <Button
-            android:onClick="startActivity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/itemClassBtn"
-            android:text="@string/class_item_maker"
-            android:textSize="20sp"
-            android:layout_marginTop="@dimen/activity_margin"
-            android:layout_marginBottom="@dimen/activity_margin" />
-
-        <Button
-            android:onClick="startActivity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/armorItemClassBtn"
-            android:text="@string/class_armor_item_maker"
-            android:textSize="20sp"
-            android:layout_marginTop="@dimen/activity_margin"
-            android:layout_marginBottom="@dimen/activity_margin" />
-
-        <Button
-            android:onClick="startActivity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/blockClassBtn"
-            android:text="@string/class_block_maker"
-            android:textSize="20sp"
-            android:layout_marginTop="@dimen/activity_margin"
-            android:layout_marginBottom="@dimen/activity_margin" />
-    </LinearLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_settings"
-        android:onClick="startActivity" />
+        android:id="@+id/itemClassBtn"
+        android:text="@string/class_item_maker"
+        android:textSize="20sp"
+        android:layout_marginTop="@dimen/activity_margin"
+        android:layout_marginBottom="@dimen/activity_margin" />
 
-</android.support.design.widget.CoordinatorLayout>
+    <Button
+        android:onClick="startActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/armorItemClassBtn"
+        android:text="@string/class_armor_item_maker"
+        android:textSize="20sp"
+        android:layout_marginTop="@dimen/activity_margin"
+        android:layout_marginBottom="@dimen/activity_margin" />
+
+    <Button
+        android:onClick="startActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/blockClassBtn"
+        android:text="@string/class_block_maker"
+        android:textSize="20sp"
+        android:layout_marginTop="@dimen/activity_margin"
+        android:layout_marginBottom="@dimen/activity_margin" />
+</LinearLayout>

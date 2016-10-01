@@ -1,19 +1,17 @@
-package com.smartdev.classmaker;
+package net.theluckycoder.classmaker;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.File;
 
 public class BlockMaker extends AppCompatActivity {
 
-    private android.support.design.widget.TextInputEditText etClassName, etDescriptionId, etCategory, etMaterial, etDestroyTime;
-    String blockHeaderPath;
+    private EditText etClassName, etDescriptionId, etCategory, etMaterial, etDestroyTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,19 +20,14 @@ public class BlockMaker extends AppCompatActivity {
         //noinspection ConstantConditions
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        blockHeaderPath = sharedPref.getString("block_header_path", "minecraftpe/world/level/block/Block.h");
-
-        //Defines
-        etClassName = (android.support.design.widget.TextInputEditText) findViewById(R.id.blockClassNameTxt);
-        etDescriptionId = (android.support.design.widget.TextInputEditText) findViewById(R.id.blockDescriptionIdTxt);
-        etCategory = (android.support.design.widget.TextInputEditText) findViewById(R.id.blockCategoryTxt);
-        etMaterial = (android.support.design.widget.TextInputEditText) findViewById(R.id.blockMaterialTxt);
-        etDestroyTime = (android.support.design.widget.TextInputEditText) findViewById(R.id.blockDestroyTimeTxt);
+        etClassName = (EditText) findViewById(R.id.blockClassNameTxt);
+        etDescriptionId = (EditText) findViewById(R.id.blockDescriptionIdTxt);
+        etCategory = (EditText) findViewById(R.id.blockCategoryTxt);
+        etMaterial = (EditText) findViewById(R.id.blockMaterialTxt);
+        etDestroyTime = (EditText) findViewById(R.id.blockDestroyTimeTxt);
     }
 
     public void createClass(View view) {
-        //Strings and Integers
         String classNameTxt = etClassName.getText().toString();
         String descriptionIdTxt = etDescriptionId.getText().toString();
         String categoryTxt = etCategory.getText().toString();
@@ -58,11 +51,11 @@ public class BlockMaker extends AppCompatActivity {
 
 
         //Code
-        File headerFile = new File (Utils.folderPath + classNameTxt + ".h");
-        File sourceFile = new File (Utils.folderPath + classNameTxt + ".cpp");
+        File headerFile = new File (Util.folderPath + classNameTxt + ".h");
+        File sourceFile = new File (Util.folderPath + classNameTxt + ".cpp");
 
         String [] headerFileString = String.valueOf("#pragma once\n\n" +
-                "#include \"" + blockHeaderPath + "\"\n\n" +
+                "#include \"minecraftpe/world/level/block/Block.h\"\n\n" +
                 "class " + classNameTxt + " : public Block {\n" +
                 "public:\n" +
                 "\t" + classNameTxt + "(int blockId);\n" +
@@ -77,11 +70,11 @@ public class BlockMaker extends AppCompatActivity {
                 "}\n").split(System.getProperty("line.separator"));
 
         if (!classNameTxt.matches("")) {
-            Utils.Save(headerFile, headerFileString);
-            Utils.Save(sourceFile, sourceFileString);
-            Snackbar.make(view, R.string.class_successfully_generated, Snackbar.LENGTH_LONG).show();
+            Util.save(headerFile, headerFileString);
+            Util.save(sourceFile, sourceFileString);
+            Toast.makeText(this, R.string.class_successfully_generated, Toast.LENGTH_SHORT).show();
         } else
-            Snackbar.make(view, R.string.error_empty_mod_name, Snackbar.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.error_empty_mod_name, Toast.LENGTH_SHORT).show();
     }
 
     @Override

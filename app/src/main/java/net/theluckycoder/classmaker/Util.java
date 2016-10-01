@@ -1,4 +1,4 @@
-package com.smartdev.classmaker;
+package net.theluckycoder.classmaker;
 
 import android.os.Environment;
 
@@ -7,24 +7,17 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class Utils {
+class Util {
 
-    public static String folderPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClassMaker/";
+    static String folderPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClassMaker/";
 
-	public void setFolderPath(String path) {
-		this.folderPath = path;
-	}
-	
-	public String getFolderPath() {
-		return folderPath;
-	}
-	
-    public static void Save(File file, String[] data) {
+    static void save(File file, String[] data) {
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
-        catch (FileNotFoundException e) {e.printStackTrace();}
         try {
             try {
                 for (int i = 0; i<data.length; i++) {
@@ -35,15 +28,17 @@ public class Utils {
                             fos.write("\n".getBytes());
                     }
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            catch (IOException e) {e.printStackTrace();}
         }
         finally {
             try {
                 if (fos != null)
                     fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            catch (IOException e) {e.printStackTrace();}
         }
     }
 }

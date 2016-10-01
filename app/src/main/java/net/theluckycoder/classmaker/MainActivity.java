@@ -1,4 +1,4 @@
-package com.smartdev.classmaker;
+package net.theluckycoder.classmaker;
 
 import android.Manifest;
 import android.app.Activity;
@@ -36,8 +36,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, ArmorItemMaker.class));
         else if (id == R.id.blockClassBtn)
             startActivity(new Intent(MainActivity.this, BlockMaker.class));
-        else if (id == R.id.fab)
-            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
     }
 
     private boolean checkPermission(){
@@ -49,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE))
             Toast.makeText(getApplicationContext(), R.string.external_storage_permission_required,Toast.LENGTH_LONG).show();
         else {
-            AlertDialog.Builder builder =  new AlertDialog.Builder(this, R.style.AppTheme_Dialog);
+            AlertDialog.Builder builder =  new AlertDialog.Builder(this);
             builder.setTitle(R.string.permission_required)
                     .setMessage(R.string.external_storage_permission_required)
                     .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
@@ -58,8 +56,7 @@ public class MainActivity extends AppCompatActivity {
                             dialog.dismiss();
                             ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
                         }
-                    })
-                    .show();
+                    }).show();
         }
     }
 

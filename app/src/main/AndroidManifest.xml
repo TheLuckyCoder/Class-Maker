@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.smartdev.classmaker">
+    package="net.theluckycoder.classmaker">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -17,21 +17,22 @@
             android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".ItemMaker"
-            android:label="@string/class_item_maker" />
+            android:label="@string/class_item_maker"
+            android:configChanges="orientation|screenLayout" />
         <activity
             android:name=".ArmorItemMaker"
-            android:label="@string/class_armor_item_maker" />
+            android:label="@string/class_armor_item_maker"
+            android:configChanges="orientation|screenLayout"/>
         <activity
             android:name=".BlockMaker"
-            android:label="@string/class_block_maker" />
-        <activity
-            android:name=".SettingsActivity"
-            android:label="@string/action_settings"/>
+            android:label="@string/class_block_maker"
+            android:configChanges="orientation|screenLayout"/>
     </application>
 
 </manifest>
