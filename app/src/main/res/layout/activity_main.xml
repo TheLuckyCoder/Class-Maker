@@ -14,8 +14,8 @@
         android:id="@+id/itemClassBtn"
         android:text="@string/class_item_maker"
         android:textSize="20sp"
-        android:layout_marginTop="@dimen/activity_margin"
-        android:layout_marginBottom="@dimen/activity_margin" />
+        android:layout_marginTop="@dimen/element_margin"
+        android:layout_marginBottom="@dimen/element_margin" />
 
     <Button
         android:onClick="startActivity"
@@ -24,8 +24,8 @@
         android:id="@+id/armorItemClassBtn"
         android:text="@string/class_armor_item_maker"
         android:textSize="20sp"
-        android:layout_marginTop="@dimen/activity_margin"
-        android:layout_marginBottom="@dimen/activity_margin" />
+        android:layout_marginTop="@dimen/element_margin"
+        android:layout_marginBottom="@dimen/element_margin" />
 
     <Button
         android:onClick="startActivity"
@@ -34,6 +34,6 @@
         android:id="@+id/blockClassBtn"
         android:text="@string/class_block_maker"
         android:textSize="20sp"
-        android:layout_marginTop="@dimen/activity_margin"
-        android:layout_marginBottom="@dimen/activity_margin" />
+        android:layout_marginTop="@dimen/element_margin"
+        android:layout_marginBottom="@dimen/element_margin" />
 </LinearLayout>

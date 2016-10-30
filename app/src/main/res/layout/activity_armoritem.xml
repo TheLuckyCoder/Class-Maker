@@ -76,5 +76,14 @@
             android:hint="@string/item_max_damage"
             android:inputType="number"
             android:visibility="gone" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/element_margin"
+            android:text="@string/class_create"
+            android:textSize="20sp"
+            android:onClick="createClass"
+            style="@style/Base.Widget.AppCompat.Button.Colored" />
     </LinearLayout>
 </ScrollView>

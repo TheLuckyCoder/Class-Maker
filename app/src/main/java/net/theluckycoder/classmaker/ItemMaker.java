@@ -1,6 +1,8 @@
 package net.theluckycoder.classmaker;
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,8 +23,8 @@ public class ItemMaker extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
-        //noinspection ConstantConditions
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         etClassName = (EditText) findViewById(R.id.itemClassNameTxt);
         etDescriptionId = (EditText) findViewById(R.id.itemDescriptionIdTxt);
@@ -30,6 +32,8 @@ public class ItemMaker extends AppCompatActivity {
         etTexture = (EditText) findViewById(R.id.itemTextureTxt);
         etMaxStackSize = (EditText) findViewById(R.id.itemMaxStackSizeTxt);
         etAttackDamage = (EditText) findViewById(R.id.itemAttackDamageTxt);
+
+        if (!Util.checkPermission(this)) Util.requestPermission(this);
     }
 
     public void onCheckboxClicked(View view) {
@@ -151,5 +155,17 @@ public class ItemMaker extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case Util.PERMISSION_REQUEST_CODE:
+                if (grantResults.length < 0 && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(getApplicationContext(), R.string.external_storage_permission_required, Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                break;
+        }
     }
 }

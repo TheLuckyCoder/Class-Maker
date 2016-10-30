@@ -1,6 +1,8 @@
 package net.theluckycoder.classmaker;
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,14 +19,16 @@ public class BlockMaker extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_block);
-        //noinspection ConstantConditions
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         etClassName = (EditText) findViewById(R.id.blockClassNameTxt);
         etDescriptionId = (EditText) findViewById(R.id.blockDescriptionIdTxt);
         etCategory = (EditText) findViewById(R.id.blockCategoryTxt);
         etMaterial = (EditText) findViewById(R.id.blockMaterialTxt);
         etDestroyTime = (EditText) findViewById(R.id.blockDestroyTimeTxt);
+
+        if (!Util.checkPermission(this)) Util.requestPermission(this);
     }
 
     public void createClass(View view) {
@@ -87,5 +91,17 @@ public class BlockMaker extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case Util.PERMISSION_REQUEST_CODE:
+                if (grantResults.length < 0 && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(getApplicationContext(), R.string.external_storage_permission_required, Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                break;
+        }
     }
 }

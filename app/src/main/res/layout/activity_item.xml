@@ -83,6 +83,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/element_margin"
             android:text="@string/class_create"
             android:textSize="20sp"
             android:onClick="createClass"
