@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.0"
 
     defaultConfig {
-        applicationId "net.luckycoder.classmaker"
+        applicationId "net.theluckycoder.classmaker"
         minSdkVersion 14
         targetSdkVersion 25
         versionCode 3

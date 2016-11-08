@@ -34,6 +34,7 @@ public class ItemMaker extends AppCompatActivity {
         etAttackDamage = (EditText) findViewById(R.id.itemAttackDamageTxt);
 
         if (!Util.checkPermission(this)) Util.requestPermission(this);
+        new File(Util.folderPath).mkdir();
     }
 
     public void onCheckboxClicked(View view) {

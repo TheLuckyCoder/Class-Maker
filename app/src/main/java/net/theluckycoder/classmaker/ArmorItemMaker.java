@@ -34,6 +34,7 @@ public class ArmorItemMaker extends AppCompatActivity {
         etMaxDamage = (EditText) findViewById(R.id.armorItemMaxDamageTxt);
 
         if (!Util.checkPermission(this)) Util.requestPermission(this);
+        new File(Util.folderPath).mkdir();
     }
 
     public void onCheckboxClicked(View view) {

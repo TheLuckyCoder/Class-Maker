@@ -29,6 +29,7 @@ public class BlockMaker extends AppCompatActivity {
         etDestroyTime = (EditText) findViewById(R.id.blockDestroyTimeTxt);
 
         if (!Util.checkPermission(this)) Util.requestPermission(this);
+        new File(Util.folderPath).mkdir();
     }
 
     public void createClass(View view) {
