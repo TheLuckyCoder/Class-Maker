@@ -19,7 +19,7 @@ import java.io.IOException;
 class Util {
 
     static final int PERMISSION_REQUEST_CODE = 1;
-    static String folderPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClassMaker/";
+    static final String folderPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClassMaker/";
 
     static void save(File file, String[] data) {
         FileOutputStream fos = null;
