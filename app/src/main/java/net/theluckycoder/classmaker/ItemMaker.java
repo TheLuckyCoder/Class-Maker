@@ -3,16 +3,18 @@ package net.theluckycoder.classmaker;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.transition.TransitionManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.File;
 
-public class ItemMaker extends AppCompatActivity {
+public final class ItemMaker extends AppCompatActivity {
 
     private boolean bCustomMaxStackSize = false,
             bCustomAttackDamage = false,
@@ -40,9 +42,12 @@ public class ItemMaker extends AppCompatActivity {
     public void onCheckboxClicked(View view) {
         boolean checked = ((CheckBox) view).isChecked();
 
+        ViewGroup containerView = (ViewGroup) findViewById(R.id.container);
+
         // Check which checkbox was clicked
         switch (view.getId()) {
             case R.id.customStackSizeCheck:
+                TransitionManager.beginDelayedTransition(containerView);
                 if (checked) {
                     etMaxStackSize.setVisibility(View.VISIBLE);
                     bCustomMaxStackSize = true;
@@ -55,6 +60,7 @@ public class ItemMaker extends AppCompatActivity {
                 bStackedByData = checked;
                 break;
             case R.id.customAttackDamageCheck:
+                TransitionManager.beginDelayedTransition(containerView);
                 if (checked) {
                     etAttackDamage.setVisibility(View.VISIBLE);
                     bCustomAttackDamage = true;
@@ -121,26 +127,26 @@ public class ItemMaker extends AppCompatActivity {
         File headerFile = new File(Util.folderPath + classNameTxt + ".h");
         File sourceFile = new File(Util.folderPath + classNameTxt + ".cpp");
 
-        String[] headerFileContent = String.valueOf("#pragma once\n\n" +
-                "#include \"minecraftpe/world/item/Item.h\"\n\n" +
+        String headerFileContent = String.valueOf("#pragma once\n\n" +
+                "#include \"item/Item.h\"\n\n" +
                 "class " + classNameTxt + " : public Item {\n" +
                 "public:\n" +
-                "\t" + classNameTxt + "(short itemId);\n" +
+                "\t" + classNameTxt + "(short id);\n" +
                 attackDamageTxt +
-                "};\n").split(System.getProperty("line.separator"));
+                "};\n");
 
-        String[] sourceFileContent = String.valueOf("#include \"" + classNameTxt + ".h\"\n\n" +
-                classNameTxt + "::" + classNameTxt + "(short itemId) : Item(\"" + descriptionIdTxt + "\", " + "itemId - 256) {\n" +
-                "\tItem::mItems[itemId] = this;\n" +
+        String sourceFileContent = String.valueOf("#include \"" + classNameTxt + ".h\"\n\n" +
+                classNameTxt + "::" + classNameTxt + "(short id) : Item(\"" + descriptionIdTxt + "\", " + "id - 256) {\n" +
+                "\tmItems[id] = this;\n" +
                 "\tsetIcon(" + textureTxt + ");\n" +
                 "\tsetCategory(CreativeItemCategory::" + categoryTxt + ");\n" +
                 maxStackSizeTxt +
                 stackedByDataTxt +
-                "}\n").split(System.getProperty("line.separator"));
+                "}\n");
 
         if (!classNameTxt.matches("")) {
-            Util.save(headerFile, headerFileContent);
-            Util.save(sourceFile, sourceFileContent);
+            Util.saveFile(headerFile, headerFileContent);
+            Util.saveFile(sourceFile, sourceFileContent);
             Toast.makeText(this, R.string.class_successfully_generated, Toast.LENGTH_SHORT).show();
         } else
             Toast.makeText(this, R.string.error_empty_mod_name, Toast.LENGTH_SHORT).show();

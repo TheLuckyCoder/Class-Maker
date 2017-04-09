@@ -3,16 +3,18 @@ package net.theluckycoder.classmaker;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.transition.TransitionManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.File;
 
-public class ArmorItemMaker extends AppCompatActivity {
+public final class ArmorItemMaker extends AppCompatActivity {
 
     private boolean bCustomMaxDamage = false;
     private EditText etClassName, etDescriptionId, etArmorMaterial, etArmorRenderType, etArmorSlot, etCategory, etTexture, etMaxDamage;
@@ -40,9 +42,12 @@ public class ArmorItemMaker extends AppCompatActivity {
     public void onCheckboxClicked(View view) {
         boolean checked = ((CheckBox) view).isChecked();
 
+        ViewGroup containerView = (ViewGroup) findViewById(R.id.container);
+
         // Check which checkbox was clicked
         switch(view.getId()) {
             case R.id.customMaxDamageCheck:
+                TransitionManager.beginDelayedTransition(containerView);
                 if (checked) {
                     etMaxDamage.setVisibility(View.VISIBLE);
                     bCustomMaxDamage = true;
@@ -105,24 +110,24 @@ public class ArmorItemMaker extends AppCompatActivity {
         File headerFile = new File(Util.folderPath + classNameTxt + ".h");
         File sourceFile = new File(Util.folderPath + classNameTxt + ".cpp");
 
-        String [] headerFileString = String.valueOf("#pragma once\n\n" +
-                "#include \"minecraftpe/world/item/ArmorItem.h\"\n\n" +
+        String headerFileString = String.valueOf("#pragma once\n\n" +
+                "#include \"item/ArmorItem.h\"\n\n" +
                 "class " + classNameTxt + " : public ArmorItem {\n" +
                 "public:\n" +
-                "\t" + classNameTxt + "(short itemId);\n" +
-                "};\n").split(System.getProperty("line.separator"));
+                "\t" + classNameTxt + "(short id);\n" +
+                "};\n");
 
-        String [] sourceFileString = String.valueOf("#include \"" + classNameTxt + ".h\"\n\n" +
-            classNameTxt + "::" + classNameTxt + "(short itemId) : Item(\"" + descriptionIdTxt + "\", " + "itemId - 256, " + armorMaterialTxt + ", " + armorRenderTypeTxt + ", ArmorSlot::" + armorSlotTxt + ") {\n" +
-            "\tItem::mItems[itemId] = this;\n" +
+        String sourceFileString = String.valueOf("#include \"" + classNameTxt + ".h\"\n\n" +
+            classNameTxt + "::" + classNameTxt + "(short id) : Item(\"" + descriptionIdTxt + "\", " + "id - 256, " + armorMaterialTxt + ", " + armorRenderTypeTxt + ", ArmorSlot::" + armorSlotTxt + ") {\n" +
+            "\tmItems[id] = this;\n" +
             "\tsetIcon(" + textureTxt + ");\n" +
             "\tsetCategory(CreativeItemCategory::" + categoryTxt + ");\n" +
             maxDamageTxt +
-            "}\n").split(System.getProperty("line.separator"));
+            "}\n");
 
         if (!classNameTxt.matches("")) {
-            Util.save(headerFile, headerFileString);
-            Util.save(sourceFile, sourceFileString);
+            Util.saveFile(headerFile, headerFileString);
+            Util.saveFile(sourceFile, sourceFileString);
             Toast.makeText(this, R.string.class_successfully_generated, Toast.LENGTH_SHORT).show();
         } else
             Toast.makeText(this, R.string.error_empty_mod_name, Toast.LENGTH_SHORT).show();

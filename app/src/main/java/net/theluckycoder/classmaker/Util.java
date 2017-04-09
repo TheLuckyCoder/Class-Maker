@@ -16,12 +16,13 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-class Util {
+final class Util {
 
     static final int PERMISSION_REQUEST_CODE = 1;
     static final String folderPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClassMaker/";
 
-    static void save(File file, String[] data) {
+    static void saveFile(File file, String content) {
+        String[] data = content.split(System.getProperty("line.separator"));
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(file);
@@ -30,7 +31,7 @@ class Util {
         }
         try {
             try {
-                for (int i = 0; i<data.length; i++) {
+                for (int i = 0; i < data.length; i++) {
                     if (fos != null)
                         fos.write(data[i].getBytes());
                     if (i < data.length-1) {
@@ -41,8 +42,7 @@ class Util {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        finally {
+        } finally {
             try {
                 if (fos != null)
                     fos.close();
